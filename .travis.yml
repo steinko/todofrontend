@@ -8,8 +8,9 @@ before_install:
   
 script:
 - npm install
-- npm  run bundle
-- npm test
+- npm run-script build
+- npm test --ci --coverage
+
 deploy:
   provider: gae
   keyfile: appengine-account.json
