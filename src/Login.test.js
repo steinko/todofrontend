@@ -23,14 +23,27 @@ describe(' test  Login', () => {
     expect(wrapper.text()).toMatch(/Password:/)
    }) 
 
-   it('Existance of Username', () => {
+   it('Exis a input field of Username with default vailue in28minutes', () => {
     const wrapper = shallow(<Login />)
-    expect(wrapper.find('input').find({ type: 'text' }).find({ namee: 'username' })).toBeDefined()
+    expect(wrapper.find('input').find({ type: 'text' }).find({ name: 'username' }).find({ value: 'in28minutes' })).toHaveLength(1)
    }) 
+
+   it('sholud store change username value', () => {
+    const wrapper = shallow(<Login />)
+    wrapper.find({ name: 'username' }).simulate('change', { target: { value: 'stein' } })
+    expect(wrapper.find({ value: 'stein' })).toHaveLength(1)
+   }) 
+
+   it('sholud store changed password value', () => {
+    const wrapper = shallow(<Login />)
+    wrapper.find({ name: 'password' }).simulate('change', { target: { value: 'coolPassword' } })
+    expect(wrapper.find({ value: 'coolPassword' })).toHaveLength(1)
+   }) 
+
 
    it('Existance of Pass Word', () => {
     const wrapper = shallow(<Login />)
-    expect(wrapper.find('input').find({ type: 'password' }).find({ namee: 'password' })).toBeDefined()
+    expect(wrapper.find('input').find({ type: 'password' }).find({ name: 'password' })).toBeDefined()
    }) 
 
    it('Existance of Button', () => {
