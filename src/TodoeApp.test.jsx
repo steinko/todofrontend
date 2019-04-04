@@ -9,6 +9,6 @@ Enzyme.configure({ adapter: new Adapter() });
 describe(' test existence of ToDOApp', () => {
   it('renders  <TodoApp /> components', () => {
     const wrapper = shallow(<TodoApp />)
-    expect(wrapper.find('Login')).toBeDefined()
+    expect(wrapper).toBeDefined()
    }) 
   })

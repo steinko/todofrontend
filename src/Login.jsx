@@ -5,25 +5,60 @@ export default class Login extends Component {
     constructor(props) {
         super(props)
         this.state = { username: 'in28minutes',
-                       password: ''
+                       password: '',
+                       showSucessMessage: true,
+                       hasLoginFailed: false
                      }
-        this.handleUsernameChange = this.handleUsernameChange.bind(this)
-        this.handlePasswordChange = this.handlePasswordChange.bind(this)
+        this.handleChange = this.handleChange.bind(this)
+        this.loginClick = this.loginClick.bind(this) 
      }
 
-     handleUsernameChange(event) { 
+     handleChange(event) { 
 
-        this.setState({username: event.target.value })
+        this.setState({[event.target.name]
+          :event.target.value })
       }
 
-      handlePasswordChange(event){ 
+      loginClick()   {
+        if (this.state.username ==='in28minutes' && this.state.password === 'dummy') { 
+           
+            console.log('sucessfull login')
+            console.log(this.state)
+            this.props.history.push("/welcome")
+            
+        } 
+        else 
+         {
+            console.log('loging failure')
+            this.setState ( { showSucessMessage: false }) 
+            this.setState (  { hasLoginFailed: true }) 
+                      
+          }
+          
 
-        this.setState({password: event.target.value })
       }
+     
 
     render() { return <div> 
-        User Name:<input type='text' name='username' value= {this.state.username} onChange= {this.handleUsernameChange}/>
-        Password: <input type='password' name='password' value= {this.state.password} onChange= {this.handlePasswordChange}/>
-        <button>Login</button>
+         {this.state.hasLoginFailed && <div>Invalid Credentials</div>}
+         {this.state.showSucessMessage && <div>Sucsessfull Loging</div>}
+
+        User Name:<input type='text' name='username' value= {this.state.username} onChange= {this.handleChange}/>
+        Password: <input type='password' name='password' value= {this.state.password} onChange= {this.handleChange}/>
+        <button onClick= {this.loginClick}>Login</button>
     </div> }
 }
+
+export function ShowInvalidCredentials(props)   { 
+  if(props.hasLoginFailed)
+      return <div>Invalid Credentials</div>
+  else
+      return null
+ }
+
+ export function ShowSucessfullLogin(props) { 
+   if(props.showSucessMessage)
+      return <div>Sucsessfull Loging</div>
+   else
+      return null
+  }
