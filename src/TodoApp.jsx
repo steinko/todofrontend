@@ -12,9 +12,9 @@ export default class TodoApp extends Component
                <Router>
                    <div>
                      <Switch>
-                       <Route path="/login"     component = {Login}/>
-                       <Route path="/welcome"   component = {Welcome}/>
-                       <Route                   component = {ErrorMessage}/>
+                       <Route path="/login"           component = {Login}/>
+                       <Route path="/welcome"         component = {Welcome}/>
+                       <Route                         component = {ErrorMessage}/>
                      </Switch>
                    </div>
                </Router>

@@ -25,8 +25,8 @@ export default class Login extends Component {
             console.log('sucessfull login')
             console.log(this.state)
             this.props.history.push("/welcome")
-            
-        } 
+
+        }
         else 
          {
             console.log('loging failure')
