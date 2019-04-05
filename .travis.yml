@@ -9,7 +9,8 @@ before_install:
 script:
 - npm install
 - npm run-script build
-- npm test --ci --coverage
+- npm test --ci 
+- sonar-scanner
 
 deploy:
   provider: gae

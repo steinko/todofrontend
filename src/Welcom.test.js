@@ -11,5 +11,11 @@ describe(' test existence of Welcome', () => {
   it('renders  Welcome components', () => {
     const wrapper = shallow(<Welcome />)
     expect(wrapper.contains("Welcome")).toBeDefined()
+   })
+   
+   xit('should diplay Hello World', () => {
+    const wrapper = shallow(<Welcome />)
+    wrapper.find('button').simulate('click')
+    expect(wrapper.contains("Hello World")).toBe(true)
    }) 
   })
