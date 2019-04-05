@@ -10,7 +10,7 @@
     "!**/*.test.*/**",
     "!**/build/**"
   ],
-    "coverageReporters" : ["clover"],
+    "coverageReporters" : ["lcov"],
     "coverageThreshold": {
       "global": {
         "branches": 80,
