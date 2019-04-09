@@ -1,6 +1,6 @@
 import React from 'react'
 import {Component} from 'react'
-import HelloWorldService from  './service/HelloWorldService'
+//import HelloWorldService from  './service/HelloWorldService'
 export default class Welcome extends Component {
     constructor(pops){
         super(pops)
