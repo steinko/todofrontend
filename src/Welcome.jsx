@@ -22,8 +22,9 @@ export default class Welcome extends Component {
             </div>
      }
 
-     helloWorldService() {    
-         const mesage = HelloWorldService.getMessage();
+     helloWorldService() { 
+         const mesage = "Hello World"   
+         //const mesage = HelloWorldService.getMessage();
          this.setState({welcomMessage: mesage })
          console.log('click on Hello World service')
       }   
