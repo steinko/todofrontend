@@ -22,3 +22,18 @@ deploy:
   provider: gae
   keyfile: appengine-account.json
   project: project-235906
+
+after_deploy: 
+ - git clone https://github.com/joyent/node.git
+ - cd node
+ - git checkout v10.15.3
+ - ./configure
+ - make 
+ - sudo make install
+ - curl -L https://npmjs.org/install.sh | sudo sh
+ - cd ..
+ - mkdir  tests
+ - cd tests
+ - git clone https://github.com/steinko/TodoFunctionalSystemTest.git
+ - npm install
+ - npm test
