@@ -1,6 +1,6 @@
-# codemix-vanilla-react
-Template for project creation of React inside CodeMix
+# TodoFrontend
+Front end of the Todo application
 
 ## Contents
 
-To do applicatin 
+UML diagram

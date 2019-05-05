@@ -17,6 +17,7 @@ script:
 - npm run-script build
 - npm test --ci 
 - sonar-scanner
+- eslint src --fix
 
 deploy:
   provider: gae

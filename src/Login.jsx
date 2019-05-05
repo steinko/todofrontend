@@ -13,6 +13,11 @@ export default class Login extends Component {
         this.loginClick = this.loginClick.bind(this) 
      }
 
+ /**
+ * Set the evenet as a state
+ *
+ * @param {event}  The event to be stored.
+ */
      handleChange(event) { 
 
         this.setState({[event.target.name]
@@ -48,17 +53,3 @@ export default class Login extends Component {
         <button onClick= {this.loginClick}>Login</button>
     </div> }
 }
-
-export function ShowInvalidCredentials(props)   { 
-  if(props.hasLoginFailed)
-      return <div>Invalid Credentials</div>
-  else
-      return null
- }
-
- export function ShowSucessfullLogin(props) { 
-   if(props.showSucessMessage)
-      return <div>Sucsessfull Loging</div>
-   else
-      return null
-  }

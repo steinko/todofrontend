@@ -4,36 +4,61 @@
   "private": true,
   "jest": {
     "collectCoverageFrom": [
-    "**/*.{js,jsx}",
-    "!**/node_modules/**",
-    "!**/__test__/**",
-    "!**/*.test.*/**",
-    "!**/build/**"
-  ],
-    "coverageReporters" : ["lcov"],
+      "**/*.{js,jsx}",
+      "!**/node_modules/**",
+      "!**/__test__/**",
+      "!**/*.test.*/**",
+      "!**/build/**"
+    ],
+    "coverageReporters": [
+      "lcov"
+    ],
     "coverageThreshold": {
       "global": {
-        "branches": 1,
+        "branches": 0,
         "functions": 1,
         "lines": 1
-    
       }
     }
   },
   "dependencies": {
+    "@types/node": "^11.13.4",
+    "@types/react": "^16.8.13",
+    "@types/react-dom": "^16.8.4",
+    "esdoc": "^1.1.0",
+    "esdoc-react-plugin": "^1.0.1",
+    "esdoc-standard-plugin": "^1.0.0",
+    "esdoc-typescript-plugin": "^1.0.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.0",
-    "react-scripts": "2.1.8"
+    "react-scripts": "2.1.8",
+    "typescript": "^3.4.3"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "PORT=4200 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --coverage",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "eslint": "eslint",
+    "jsdoc": "jsdoc"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "plugins": [
+      "react"
+    ],
+    "extends": [
+      "eslint:recommended",
+      "plugin:react/recommended",
+      "react-app"
+    ],
+    "env": {
+      "jest": true
+    },
+    "rules": {
+      "no-console": "off"
+    },
+    "parser": "@typescript-eslint/parser"
   },
   "browserslist": [
     ">0.2%",
@@ -42,7 +67,14 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "@types/enzyme": "^3.9.1",
+    "@types/enzyme-adapter-react-16": "^1.0.5",
+    "@types/jest": "^24.0.11",
+    "@typescript-eslint/parser": "^1.6.0",
     "enzyme": "^3.9.0",
-    "enzyme-adapter-react-16": "^1.11.2"
+    "enzyme-adapter-react-16": "^1.12.1",
+    "jsdoc": "^3.5.5",
+    "react-test-renderer": "^16.8.6",
+    "ts-jest": "^24.0.2"
   }
 }
