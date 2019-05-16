@@ -15,7 +15,7 @@ before_install:
 script:
 - npm install
 - npm run-script build
-- npm test --ci 
+- npm test_in_build 
 - sonar-scanner
 - eslint src --fix
 

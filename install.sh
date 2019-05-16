@@ -1,3 +1,4 @@
+
 create codmix rect projct
 npm inint
 npm start
@@ -10,3 +11,6 @@ npm install -D enzyme @types/enzyme enzyme-adapter-react-16 @types/enzyme-adapte
 npm install --save-dev jsdoc
 npm install esdoc-react-plugin
 npm install esdoc-typescript-plugin
+npm i dotenv
+npm install --save-dev jest-fetch-mock
+npm install node-env-file
