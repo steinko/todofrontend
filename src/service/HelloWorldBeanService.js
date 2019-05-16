@@ -1,7 +1,4 @@
- // eslint-disable-next-line
-import env from 'node-env-file'
- 
-class HelloWorldBeanService {
+ class HelloWorldBeanService {
   constructor (props) {
     
     this.state = {
