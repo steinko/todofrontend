@@ -8,7 +8,9 @@ class HelloWorldService {
   async getMessage () {
      try {
        let response = await fetch(this.state.serverURL + '/hello-world')
+       console.info(response)
        let text = await response.text()
+       console.info(text)
         return  text
     } catch(error)  { 
         console.error(error)

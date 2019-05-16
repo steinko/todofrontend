@@ -5,9 +5,7 @@ it('should recive hellow world from the server ', async () => {
      console.info("ENVIROMENT=== 'build'")
      global.fetch = require('jest-fetch-mock')
      fetch.resetMocks()
-     fetch.mockResponseOnce(  new Promise(function(resolve, reject) {
-                  resolve('Hello World Bean')
-        })) 
+     fetch.mockResponseOnce( 'Hello World')
   }
 
   const message =  await HelloWorldService.getMessage()
