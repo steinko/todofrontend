@@ -1,12 +1,16 @@
+ // eslint-disable-next-line
+import env from 'node-env-file'
+ 
 class HelloWorldBeanService {
   constructor (props) {
+    
     this.state = {
-      serverURL: 'http://localhost:8080'
-
+      serverURL: process.env.SERVER_URL
     }
   }
   async getMessage () {
     try {
+      console.info(this.state.serverURL)
       let response = await fetch(this.state.serverURL + '/hello-world-bean')
       let json = await response.json()
       let message = json.message

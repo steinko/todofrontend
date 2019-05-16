@@ -1,7 +1,7 @@
 class HelloWorldService {
   constructor (props) {
     this.state = {
-      serverURL: 'http://localhost:8080'
+      serverURL: process.env.SERVER_URL
 
     }
   }
