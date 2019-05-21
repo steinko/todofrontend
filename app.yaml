@@ -1,5 +1,6 @@
-runtime: nodejs
-env: flex
+runtime: nodejs10
+env: standard
 service: todofrontend
 env_variables:
-  SERVER_URL: "https://project45913.appspot.com"
+  SERVER_URL: "https://todofrontend-dot-project45914.appspot.com"
+  
