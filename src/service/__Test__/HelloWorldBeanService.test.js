@@ -2,7 +2,7 @@ import HelloWorldBeanService from '../HelloWorldBeanService'
 
 beforeAll( ()=>  { if (process.env.ENVIRONMENT === 'build') {
        global.fetch = require('jest-fetch-mock')
-       console.info("ENVIROMENT === 'build'")
+       console.info("ENVIRONMENT === 'build'")
        fetch.resetMocks()
        fetch.mockResponseOnce( JSON.stringify({ message: "Hello World Bean" }) )
       } 
