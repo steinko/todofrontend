@@ -40,7 +40,7 @@
   },
   "scripts": {
     "start_dev": "PORT=4200 node -r dotenv/config react-scripts start",
-    "start": "node -r dotenv/config serve -s build dotenv_config_path= ./test.env",
+    "start": "serve -s build",
     "build": "react-scripts build",
     "test": "react-scripts test --coverage",
     "test_in_build": "DOTENV_CONFIG_PATH=build.env  node -r dotenv/config ./node_modules/.bin/react-scripts test --coverage --ci",
