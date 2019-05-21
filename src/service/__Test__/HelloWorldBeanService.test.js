@@ -27,7 +27,7 @@ it('should load SERVER_URL for development enviroment ', () => {
 
     it('should load SERVER_URL in build enviroment', () => {
       if (process.env.ENVIRONMENT === 'build') {
-         expect(process.env.SERVER_URL).toBe('undenfine')
+         expect(process.env.SERVER_URL).toBe('non')
        }
    })
 

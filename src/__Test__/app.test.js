@@ -16,8 +16,29 @@ describe(' test App', () => {
 })
 
 describe('unit test  loadenv', () => {
+   beforeAll( () =>{  loadEnv()    } )
    it('should load SERVER_URL', () => {
-      loadEnv()
+      if (process.env.ENVIRONMENT === 'dev') 
       expect(process.env.SERVER_URL).toBe('http://localhost:8080')
    })
+
+   it('should load enviroment variables', () => {
+         expect(process.env.ENVIRONMENT).toBeDefined() 
+         expect(process.env.SERVER_URL).toBeDefined()
+       })
+
+    it('should load SERVER_URL in build enviroment', () => {
+    
+      if (process.env.ENVIRONMENT === 'build') {
+         expect(process.env.SERVER_URL).toBe('non')
+       }
+   })
+
+    it('should load SERVER_URL in test enviroment', () => {
+  
+      if (process.env.ENVIRONMENT === 'test') {
+         expect(process.env.SERVER_URL).toBe('https://todofrontend-dot-project45914.appspot.com')
+       }
+   })
  })
+
