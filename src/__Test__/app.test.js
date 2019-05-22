@@ -4,7 +4,6 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
 import Enzyme from 'enzyme'
-import {loadEnv} from '../App'
 
 Enzyme.configure({ adapter: new Adapter() })
 
@@ -16,11 +15,7 @@ describe(' test App', () => {
 })
 
 describe('unit test  loadenv', () => {
-   beforeAll( () =>{  loadEnv()    } )
-   it('should load SERVER_URL', () => {
-      if (process.env.ENVIRONMENT === 'dev') 
-      expect(process.env.SERVER_URL).toBe('http://localhost:8080')
-   })
+   
 
    it('should load enviroment variables', () => {
          expect(process.env.ENVIRONMENT).toBeDefined() 

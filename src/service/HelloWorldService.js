@@ -1,9 +1,11 @@
+import { serverUrl } from './Environment'
 class HelloWorldService {
   constructor (props) {
     this.state = {
-      serverURL: process.env.SERVER_URL
-
+      serverURL: serverUrl()
+     
     }
+    console.log(this.state.serverURL)
   }
   async getMessage () {
      try {

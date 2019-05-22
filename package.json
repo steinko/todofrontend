@@ -27,6 +27,7 @@
     "@types/react": "^16.8.13",
     "@types/react-dom": "^16.8.4",
     "dotenv": "^8.0.0",
+    "env-cmd": "^9.0.1",
     "esdoc": "^1.1.0",
     "esdoc-react-plugin": "^1.0.1",
     "esdoc-standard-plugin": "^1.0.0",
@@ -39,11 +40,16 @@
     "typescript": "^3.4.3"
   },
   "scripts": {
-    "start_dev": "PORT=4200 node -r dotenv/config react-scripts start",
-    "start": "serve -s build",
+    "prestart:dev": "npm run build:dev",
+    "start:react": "env-cmd react-scripts start",
+    "start:dev": "env-cmd node server.js",
+    "start": "node node -r dotenv/config-serve -s build  prod.env",
     "build": "react-scripts build",
+    "build:dev": "env-cmd npm run build",
+    "build:testing": "env-cmd -f test.env npm run build",
+    "build:build": "env-cmd build.env npm run build",
     "test": "react-scripts test --coverage",
-    "test_in_build": "DOTENV_CONFIG_PATH=build.env  node -r dotenv/config ./node_modules/.bin/react-scripts test --coverage --ci",
+    "test_in_build": "test --coverage --ci",
     "eject": "react-scripts eject",
     "eslint": "eslint",
     "jsdoc": "jsdoc"
