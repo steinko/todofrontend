@@ -1,13 +1,20 @@
-import dotenv from 'dotenv' 
-export function serverUrl(){
+ export async function  serverUrl() {
     try {
-      const config = dotenv.config()
-      console.info(config.parsed) 
-      console.info(process.env.SERVER_URL)
-      return process.env.SERVER_URL
-    } catch(error)
-    { 
+      console.info('Environment')
+      const frontendUrl = window.location.hostname
+      const port = window.location.port
+      console.log(frontendUrl)
+      console.log(port)
+      const backendUrl = 'http://'+ frontendUrl + ':'+ port + '/backendUrl'
+      console.log(backendUrl)
+      let response = await fetch(backendUrl)
+      let json = await response.json()
+      console.info('Environment response')
+      console.info(json)
+      return  json
+    } catch(error)  { 
         console.error(error)
-        throw(error)
-     }
+        throw error
+    }
+      
 }
