@@ -14,10 +14,10 @@
   "scripts": {
     "start:dev": "node -r dotenv/config server.js",
     "prestart": "npm build",
-    "start": "node -r dotenv/config server.js dotenv_config_path= .env.test",
+    "start": "node -r dotenv/config server.js dotenv_config_path=.env.test",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "test_in_buld": "node -r dotenv/config server.js dotenv_config_path= .env.build ",
+    "test_in_buld": "node -r dotenv/config server.js dotenv_config_path=.env.build ",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
