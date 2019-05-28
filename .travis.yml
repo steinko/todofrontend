@@ -12,7 +12,7 @@ before_install:
 script:
 - npm install
 - npm run build
-- npm test_in_build
+- npm  run test_in_build
 - sonar-scanner
 - eslint src --fix
 deploy:
