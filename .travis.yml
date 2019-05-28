@@ -11,14 +11,14 @@ before_install:
   -in service-account.json.enc -out service-account.json -d
 script:
 - npm install
-- npm run-script build
-- npm run test_in_build
+- npm run build
+- npm test
 - sonar-scanner
 - eslint src --fix
 deploy:
   provider: gae
   keyfile: service-account.json
-  project: project45915
+  project: project45916
 after_deploy:
 - git clone https://github.com/joyent/node.git
 - cd node
@@ -30,7 +30,7 @@ after_deploy:
 - cd ..
 - mkdir  tests
 - cd tests
-- git clone https://github.com/steinko/TodoFunctionalSystemTest.git
+- git clone https://github.com/steinko/todofunctionalsystemtest.git
 - npm install
 - npm test
 service-account:
