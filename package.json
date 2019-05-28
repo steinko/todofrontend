@@ -17,7 +17,7 @@
     "start": "node -r dotenv/config server.js dotenv_config_path=.env.test",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "test_in_build": "node -r dotenv/config ./node_modules/react-scripts/bin/react-scripts.js test ./src dotenv_config_path=.env.build ",
+    "test_in_build": "node -r dotenv/config ./node_modules/react-scripts/bin/react-scripts.js test ./src dotenv_config_path=./.env.build ",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
