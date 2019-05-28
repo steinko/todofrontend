@@ -1,4 +1,4 @@
-import {serverUrl} from 'Environment'
+import {serverUrl} from '../Environment'
 import HelloWorldService from '../HelloWorldService'
 
 describe('test hello world service', () => {
