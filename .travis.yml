@@ -1,0 +1,41 @@
+language: node_js
+node_js:
+- stable
+addons:
+  sonarcloud:
+    organization: steinko-github
+    token:
+      secure: bedd53752066ff9fb6d937ef01e864ac82317bcd
+before_install:
+- openssl aes-256-cbc -K $encrypted_116c5b5544ce_key -iv $encrypted_116c5b5544ce_iv
+  -in service-account.json.enc -out service-account.json -d
+script:
+- npm install
+- npm run-script build
+- npm run test_in_build
+- sonar-scanner
+- eslint src --fix
+deploy:
+  provider: gae
+  keyfile: service-account.json
+  project: project45915
+after_deploy:
+- git clone https://github.com/joyent/node.git
+- cd node
+- git checkout v10.15.3
+- "./configure"
+- make
+- sudo make install
+- curl -L https://npmjs.org/install.sh | sudo sh
+- cd ..
+- mkdir  tests
+- cd tests
+- git clone https://github.com/steinko/TodoFunctionalSystemTest.git
+- npm install
+- npm test
+service-account:
+  json:
+    secure: EZbWYMMj2lefAAy16d2UpeMiVuAXoXHOAEa/S3tKr1u5vmVsPwM9C58JR2OoD+3PoaLfUBG3TJutN6OPvc0j3mTlYlxgqu1qMOcwnph7vIAA8HVZvPTTAzkfXlHDn4ZSJbMvchKb42/3/YqwbhTpAo6XMA6DHjXCTs7kqzPb7kjD7s1XV1723Ja6NjTJSEGC2O5wnSz/DSQYgLbBPM0gpAPHAdPd2635QRbuSm7bWTlC0cNcBG4H3+rWNnpdMtTTEN0qC1MEq0uEw9Oeby5KU1B81uEQP8jcbtcGenAoU2zJZoLYlYuzxEguklosecsecuXK7nq0xjXWfFZg8Q363HquGuE7FZpveyU+L3R6L1G3sQF7YWW70+YN+S3bHCg5oU8eBAZTUcLYdmPLrW8jndNSiKMD5I4eVb1i1eEEgo6N0YZzwl5YFHrkgepUVKG3QTEPR4M77FZzgCsHXv20eBcM/xJ18TW8kDSdHYA8fPysdFCZ3D9fM8v4JrraIpM3Cs5BFfKuYTnWvi1NNQik88o/LLI06Tq5TTgxCoVaCN1CBZ23hHenXtVpcb0Pt9whcyxgmVC3QVZv7UVnYGdnh7EuEReunzPjf9IYGgukmbyPicN79Ph+scC2tjR+zWqyZXIroNShuVzBuioOjNLKgYPl7XxvRvWsa1D7kW388pE=
+env:
+  global:
+    secure: fCQp0nXVJ3t9qobmOOStbKbnkOIWH9VnytxLkcVQPswH4T2M0GOMQt/oB0jqesS7uXVaanQWBVl8oQ+n6ycrlYKOpJEBdEYEXx71a8cpnDNP90Hk0Z0atN429YCUfHAHchhCzligCAWpNr6zmEeU1YdCtvWh1mzTeYF0/UlG+9byswlHGIL9C2XpBILKNEQ/S0VzHM8nQpLE6yMQ8l9VqRZk6Wxibr4fikHEZntxJh9sPl/AYygafZjCeJPbmU3USy8kkNSlj8QV958PkgFiHSs5k3M9lVMLUFlxRoooKFneX6mHJdxbl1HdlEmyShT5hCbM45Xbb2nzxUwMNH4Kt4JW/HI+JrI49SrGKeydg+MIKauSVvIrTd22kG71UXHnYt+84/SdInjr+PrgI03uiCsQCzBYSzoOX4cWe16IkfhtQSV+ws51TwNkpJEMR+9qY1LHXJ15Wsr/LNBYlYwvfG6YgB5We2rSBWXIzcJc19Su77dWx53Bdl7/v3nnh+SEtTjyR5oTqOJFmPDuEJZ89LwxKirdCBUEDd2w5phH8I3XgMUtdWm7+LVl2lllsLY3/Z390F7YXie+aDSk8T26npY4nFeOlNozqhLsrpICVbrM4MwSZeNyHKjiD7d7pf1LohjHoShYekx6+Z2GU8NpYZ7Em5HhW5RmIntWhuT5MdA=
