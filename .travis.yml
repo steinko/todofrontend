@@ -18,7 +18,7 @@ script:
 deploy:
   provider: gae
   keyfile: service-account.json
-  project: project45916
+  project: project45917
 after_deploy:
 - git clone https://github.com/joyent/node.git
 - cd node
