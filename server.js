@@ -28,6 +28,6 @@ app.get('/backendUrl', function(req, res) {
 })
 
 
-app.listen(9000);
+app.listen(process.env.PORT);
 
 

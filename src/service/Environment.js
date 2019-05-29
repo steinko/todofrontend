@@ -6,13 +6,7 @@
       console.log(frontendUrl)
       console.log(port)
 
-      if (port.length === 0) {
-         const object = { serverUrl: "non",
-                          env: "build"
-                        }
-         return object;
-        }  
-      else {
+      if ((process.platform ==='linux') || (port.length !== 0)) {
           const backendUrl = 'http://'+ frontendUrl + ':'+ port + '/backendUrl'
           console.log(backendUrl)
           let response = await fetch(backendUrl)
@@ -20,8 +14,13 @@
           console.info('Environment response')
           console.info(json)
           return  json  
-        }    
-         
+         }
+      else if (port.length === 0) {
+         const object = { serverUrl: "non",
+                          env: "build"
+                        }
+         return object;
+        }   
     } catch(error)  { 
         console.error(error)
         throw error

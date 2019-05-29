@@ -12,12 +12,12 @@
     "typescript": "^3.4.5"
   },
   "scripts": {
-    "start:dev": "node -r dotenv/config server.js",
+    "start:dev": "PORT=9000 node -r dotenv/config server.js",
     "prestart": "npm build",
     "start": "node -r dotenv/config server.js dotenv_config_path=.env.test",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "test_in_build": "DOTENV_CONFIG_PATH=./.env.build node -r dotenv/config ./node_modules/react-scripts/bin/react-scripts.js test ./src",
+    "test_in_build": "DOTENV_CONFIG_PATH=./.env.build node -r dotenv/config ./node_modules/react-scripts/bin/react-scripts.js test ./src&",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
