@@ -7,6 +7,8 @@ addons:
     token:
       secure: bedd53752066ff9fb6d937ef01e864ac82317bcd
 before_install:
+- openssl aes-256-cbc -K $encrypted_2fc494336ba1_key -iv $encrypted_2fc494336ba1_iv
+  -in service-account.json.enc -out service-account.json -d
 - openssl aes-256-cbc -K $encrypted_116c5b5544ce_key -iv $encrypted_116c5b5544ce_iv
   -in service-account.json.enc -out service-account.json -d
 script:
