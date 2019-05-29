@@ -2,9 +2,10 @@ import {serverUrl} from '../Environment'
 import HelloWorldService from '../HelloWorldService'
 
 describe('test hello world service', () => {
-  const cserverUrl = serverUrl()
-  beforeAll(()=> {
-    
+  let cserverUrl
+  beforeAll(async ()=> {
+      cserverUrl = await serverUrl()
+       console.log(cserverUrl.env)
     if (cserverUrl.env === 'build') {
        console.info("serverUrl.env=== 'build'")
        global.fetch = require('jest-fetch-mock')
