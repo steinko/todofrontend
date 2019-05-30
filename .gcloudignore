@@ -12,6 +12,12 @@
 # below:
 .git
 .gitignore
+install.sh
+service-account.json.enc
+service-account.json
+sonar-project.properties
+package-lock.json
+app,yaml
 
 # Node.js dependencies:
 node_modules/
