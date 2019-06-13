@@ -3,22 +3,30 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@google-cloud/logging": "^5.0.1",
+    "@google-cloud/logging-bunyan": "^0.10.1",
     "@types/react": "^16.8.18",
+    "bunyan": "^1.8.12",
+    "del": "^4.1.1",
     "dotenv": "^8.0.0",
+    "fs": "0.0.1-security",
+    "log4javascript": "^1.4.15",
+    "path": "^0.12.7",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.0",
     "react-scripts": "3.0.1",
-    "typescript": "^3.4.5"
+    "supertest": "^4.0.2",
+    "typescript": "^3.4.5",
+    "winston": "^3.2.1"
   },
   "scripts": {
-    "start:dev": "PORT=9000 node -r dotenv/config server.js",
+    "start:devsource": "PORT=9000 DOTENV_CONFIG_PATH=./.env node -r dotenv/config ./node_modules/react-scripts/bin/react-scripts.js start",
+    "start:devbuild": "PORT=9000 node -r dotenv/config server.js",
     "prestart": "npm build",
     "start": "node -r dotenv/config server.js dotenv_config_path=.env.test",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "test_in_build": "DOTENV_CONFIG_PATH=./.env.build node -r dotenv/config ./node_modules/react-scripts/bin/react-scripts.js test ./src&",
+    "test_in_build": "DOTENV_CONFIG_PATH=./.env.build node -r dotenv/config ./node_modules/react-scripts/bin/react-scripts.js test ./src",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
