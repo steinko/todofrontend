@@ -17,7 +17,8 @@
     "react-scripts": "3.0.1",
     "supertest": "^4.0.2",
     "typescript": "^3.4.5",
-    "winston": "^3.2.1"
+    "winston": "^3.2.1",
+    "snyk": "^1.221.1"
   },
   "scripts": {
     "start:devsource": "PORT=9000 DOTENV_CONFIG_PATH=./.env node -r dotenv/config ./node_modules/react-scripts/bin/react-scripts.js start",
@@ -27,7 +28,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "test_in_build": "DOTENV_CONFIG_PATH=./.env.build node -r dotenv/config ./node_modules/react-scripts/bin/react-scripts.js test ./src",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -48,5 +51,6 @@
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.13.1",
     "jest-fetch-mock": "^2.1.2"
-  }
+  },
+  "snyk": true
 }
