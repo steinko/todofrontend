@@ -1,0 +1,8 @@
+runtime: custom
+env: flex
+env_variables:
+  SPRING_PROFILES_ACTIVE: "gcp"
+handlers:
+- url: /.*
+  script: this field is required, but ignored
+service: todofrontend
