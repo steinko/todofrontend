@@ -44,12 +44,32 @@ export default class Login extends Component {
       }
      
 
-    render() { return <div> 
-         {this.state.hasLoginFailed && <div>Invalid Credentials</div>}
-         {this.state.showSucessMessage && <div>Sucsessfull Loging</div>}
+    render() { return ( 
+        <div> 
+           {this.state.hasLoginFailed && <div>Invalid Credentials</div>}
+           {this.state.showSucessMessage && <div>Sucsessfull Loging</div>}
+           <label>
+               User Name:
+               <input 
+                 type='text' 
+                 name='username' 
+                 value= {this.state.username} 
+                 onChange= {this.handleChange}
+              />
+           </label>
 
-        User Name:<input type='text' name='username' value= {this.state.username} onChange= {this.handleChange}/>
-        Password: <input type='password' name='password' value= {this.state.password} onChange= {this.handleChange}/>
-        <button onClick= {this.loginClick}>Login</button>
-    </div> }
+           <label>
+              Password: 
+              <input 
+                type='password' 
+                name='password' 
+                value= {this.state.password} 
+                onChange= {this.handleChange}
+              />
+           </label>
+
+           <button onClick= {this.loginClick}>Login</button>
+       </div>
+     ) 
+    }
 }

@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-  
     "dotenv": "^8.2.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
@@ -11,7 +10,7 @@
     "react-scripts": "^3.4.1",
     "react-tools": "^0.13.3",
     "winston": "^3.3.3",
-    "winston-elasticsearch": "^0.9.0"
+    "winston-elasticsearch": "^0.7.12"
   },
   "scripts": {
     "start:devsource": "PORT=9000 DOTENV_CONFIG_PATH=./.env node -r dotenv/config ./node_modules/react-scripts/bin/react-scripts.js start",
@@ -23,7 +22,6 @@
     "test_in_build": "DOTENV_CONFIG_PATH=./.env.build node -r dotenv/config ./node_modules/react-scripts/bin/react-scripts.js test ./src",
     "test_in_dev": "DOTENV_CONFIG_PATH=./.env.dev node -r dotenv/config ./node_modules/react-scripts/bin/react-scripts.js test ./src",
     "eject": "react-scripts eject"
-    
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -41,6 +39,7 @@
     ]
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^5.11.0",
     "@testing-library/react": "^10.4.6",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",

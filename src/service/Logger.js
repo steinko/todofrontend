@@ -1,59 +1,28 @@
 var winston = require('winston');
 var Elasticsearch = require('winston-elasticsearch');
-  var instance
-  var logger
-  var esTransportOpts = {
-  level: 'info' }
-
+ 
 class Logger { 
 
-    constructor() {
-        logger = winston.createLogger({
+   constructor() {
+	 this.instance=null
+	 this.esTransportOpts = {
+	   level: 'info' ,
+     clientOpts: { node: 'http://localhost:9200'},        
+      index:'todo-frontend'
+	 }
+
+     this.logger = winston.createLogger({
            transports: [
-               new Elasticsearch(esTransportOpts)
-          ]
-       })
+               new Elasticsearch(this.esTransportOpts)
+           ]
+      })
     }
 
-	 static getLogger() { 
-     if (!instance)  { 
-        instance = new Logger()
+	static getLogger() { 
+      if (this.instance == null)  { 
+        this.instance =  new Logger()
       }
-     return logger
+     return this.logger
    }
-
-
-   createLogger () { 
-	    let logger = winston.createLogger({
-           level: 'info',
-           format: winston.format.json(),
-            defaultMeta: { service: 'user-service' },
-            transports: [
-               
-                   new winston.transports.File({ filename: 'combined.log' })
-            ]
-        });
-
-         //
-         // If we're not in production then log to the `console` with the format:
-         // `${info.level}: ${info.message} JSON.stringify({ ...rest }) `
-         // 
-         if (process.env.NODE_ENV !== 'production') {
-           logger.add(new winston.transports.Console({
-            format: winston.format.simple()
-        }));
-    }
-
-   }
-
-
-	static addLogging () { 
-		winston.add(winston.transports.Logstash, {
-          port: 28777,
-          node_name: 'my node name',
-          host: '127.0.0.1'
-        });
-
-	}
-}
+ } 
 export default Logger

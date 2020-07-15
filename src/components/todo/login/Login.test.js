@@ -1,65 +1,51 @@
+import {render, fireEvent } from '@testing-library/react'
+import '@testing-library/jest-dom/extend-expect'
+import  Login  from './Login'
 import React from 'react'
-import { shallow } from 'enzyme'
-import Adapter from 'enzyme-adapter-react-16'
-import Enzyme from 'enzyme'
 
-import Login from './Login'
 
-Enzyme.configure({ adapter: new Adapter() })
+describe(' Unit tests of  Login component', () => {
+  
+  
 
-describe(' test  Login', () => {
-  const wrapper = shallow(<Login />)
-
-  it('Existance of Login components', () => {
-    expect(wrapper).toBeDefined()
+  it('should exsist a  login components', async  () => {
+	   let {getByLabelText}  =  render(<Login/>)
+     await  expect(getByLabelText).not.toBeNull()
   })
 
-  it('Existance of User Name', () => {
-    expect(wrapper.text()).toMatch(/User Name:/)
+  it('should exist a user name', async () => {
+     let {getByLabelText} =  render(<Login/>)
+    expect(await getByLabelText('User Name:').value).toBe('in28minutes')
   })
 
-  it('Existance of Pass Word', () => {
-    expect(wrapper.text()).toMatch(/Password:/)
+  it('should exist a password', async () => {
+     let {getByLabelText} =  render(<Login/>)
+    expect(await getByLabelText('Password:').name).toBe('password')
   })
 
-  it('Exis a input field of Username with default vailue in28minutes', () => {
-    expect(wrapper.find('input').find({ type: 'text' }).find({ name: 'username' }).find({ value: 'in28minutes' })).toHaveLength(1)
+
+  it('should exist a button', async () => {
+    let {getByRole} =  render(<Login/>)
+   await expect(getByRole('button')).toHaveTextContent('Login')
   })
 
-  xit('sholud store change username value', () => {
-    wrapper.find({ name: 'username' }).simulate('change', { target: { value: 'stein' } })
-    expect(wrapper.find({ value: 'stein' })).toHaveLength(1)
-  })
+  it ('shold display entered username', () => { 
+   let { queryByLabelText} = render(<Login/>)
+   let entry = 'cool username'
+   let userNameField = queryByLabelText('User Name:')
+   fireEvent.change(userNameField, { target: { value:  entry } })
+   expect(userNameField.value).toBe(entry)
+   
+})
 
-  xit('sholud store changed password value', () => {
-    wrapper.find({ name: 'password' }).simulate('change', { target: { value: 'coolPassword' } })
-    expect(wrapper.find({ value: 'coolPassword' })).toHaveLength(1)
-  })
 
-  it('Existance of Pass Word', () => {
-    expect(wrapper.find('input').find({ type: 'password' }).find({ name: 'password' })).toBeDefined()
-  })
+it ('shold display entered password', () => { 
+   let { queryByLabelText} = render(<Login/>)
+   let entry = 'cool passworf'
+   let passWordField = queryByLabelText('Password:')
+   fireEvent.change(passWordField, { target: { value:  entry } })
+   expect(passWordField.value).toBe(entry)
+   
+})
 
-  it('Existance of Button', () => {
-    expect(wrapper.find('button').text()).toContain('Login')
-  })
-
-  it('should login', () => {
-    wrapper.find({ name: 'password' }).simulate('change', { target: { value: 'dummy' } })
-    const welcome = wrapper.find('button').simulate('click')
-    expect(welcome.text()).toContain('Login')
-  })
-
-  it('should faile loging ', () => {
-    wrapper.find({ name: 'password' }).simulate('change', { target: { value: 'coolPassword' } })
-    wrapper.find('button').simulate('click')
-    expect(wrapper.text()).toContain('Invalid Credentials')
-  })
-
-  it('should  failure login', () => {
-    wrapper.find({ name: 'username' }).simulate('change', { target: { value: 'stein'} })
-    wrapper.find({ name: 'password' }).simulate('change', { target: { value: 'dummy' } })
-    wrapper.find('button').simulate('click')
-    expect(wrapper.text()).toContain('Invalid Credentials')
-  })
 })
