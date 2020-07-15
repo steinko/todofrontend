@@ -1,4 +1,3 @@
-language: node
-script:
-- npm i
-- npm test
+language: node_js
+before_install: npm i
+script: npm test

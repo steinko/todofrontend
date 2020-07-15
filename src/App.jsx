@@ -1,6 +1,6 @@
 import React from 'react'
 import {Component} from 'react'
-import TodoApp from './compponents/todo/todoApp/TodoApp'
+import TodoApp from './components/todo/todoapp/TodoApp'
 
 
 export default class App extends Component { 
