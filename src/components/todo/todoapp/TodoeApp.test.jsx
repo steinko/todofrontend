@@ -1,10 +1,10 @@
-import TodoApp from '../TodoApp';
+import TodoApp from './TodoApp';
 import React from 'react';
 import { shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import Enzyme from 'enzyme';
 import { createBrowserHistory } from 'history';
-import Welcome from '../Welcome'
+import Welcome from '../welcome/Welcome'
 
 Enzyme.configure({ adapter: new Adapter() });
  

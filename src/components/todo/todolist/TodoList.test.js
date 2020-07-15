@@ -1,4 +1,4 @@
-import TodoList from '../TodoList'
+import TodoList from './TodoList'
 import React from 'react'
 import { render} from '@testing-library/react'
 

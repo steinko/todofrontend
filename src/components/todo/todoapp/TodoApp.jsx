@@ -1,9 +1,9 @@
 import React from 'react'
 import {Component} from 'react'
-import Login from './Login'
+import Login from '../login/Login'
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
-import Welcome from './Welcome';
-import TodoList from './TodoList'
+import Welcome from '../welcome/Welcome';
+import TodoList from '../todolist/TodoList'
 
 
 export default class TodoApp extends Component 

@@ -1,4 +1,4 @@
-import Todo from '../Todo'
+import Todo from './Todo'
 
 it ('should exist', () => {
 	const todo = new Todo('1','stein','Fix mutter', '2020-01-01:01.01',false)

@@ -1,7 +1,8 @@
 import React from 'react'
 import {Component} from 'react'
-import HelloWorldService from  './service/HelloWorldService'
-import HelloWorldBeanService from './service/HelloWorldBeanService'
+import HelloWorldService from  '../../../service/HelloWorldService'
+import HelloWorldBeanService from '../../../service/HelloWorldBeanService'
+
 export default class Welcome extends Component {
     constructor(pops){
         super(pops)
@@ -34,7 +35,7 @@ export default class Welcome extends Component {
          this.setState({welcomMessage: data })  
       } 
       
- async helloWorldBeanService() {    
+    async helloWorldBeanService() {    
          const data  = await HelloWorldBeanService.getMessage()
          console.log(data)
          this.setState({welcomMessage: data })  

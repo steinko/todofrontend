@@ -1,4 +1,4 @@
-import Welcome from '../Welcome'
+import Welcome from './Welcome'
 import React from 'react'
 import { shallow } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
