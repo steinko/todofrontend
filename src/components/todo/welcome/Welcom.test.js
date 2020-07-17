@@ -1,5 +1,9 @@
 import Welcome from './Welcome'
 import React from 'react'
+
+import {render, fireEvent } from '@testing-library/react'
+import '@testing-library/jest-dom/extend-expect'
+
 import { shallow } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
 import Enzyme from 'enzyme'
@@ -7,10 +11,28 @@ import Enzyme from 'enzyme'
 Enzyme.configure({ adapter: new Adapter() })
 
 describe(' test existence of Welcome', () => {
-  it('renders  Welcome components', () => {
-    const wrapper = shallow(<Welcome />)
-    expect(wrapper.text()).toBe('WelcomeClick here to displaye hello world Get Welcome Message  Get Welcome Bean Message Todos')
+
+  it('should exists a Welcome components', () => {
+
+    let {getByText}  =  render(<Welcome/>)
+    expect(getText).not.toBeNull()
   })
+
+  xit('should display Welcome Stein', () => {
+   // let {getByText}  =  render(<Welcome match.params.name = 'Stein'/>)
+    expect(getText('Welcome Stein')).not.toBeNull()
+  })
+
+  xit('should display Welcome Oddmund', () => {
+    //let {getByText}  =  render(<Welcome match.params.name = 'Oddmund'/>)
+    expect(getText('Welcome Oddmund')).not.toBeNull()
+  })
+
+  xit('should display click hear', () => {
+    let {getByText}  =  render(<Welcom/>)
+     expect(getText('Click here')).not.toBeNull()
+  })
+
 
   xit('should diplay Hello World', () => {
     const wrapper = shallow(<Welcome />)

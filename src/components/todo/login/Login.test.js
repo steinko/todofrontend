@@ -48,4 +48,17 @@ it ('shold display entered password', () => {
    
 })
 
+it('should failure login ', () => {
+   let { queryByLabelText,getByRole, queryByText} = render(<Login/>)
+   let entry = 'cool password'
+   let passWordField = queryByLabelText('Password:')
+   fireEvent.change(passWordField, { target: { value:  entry } })
+   fireEvent.click(getByRole('button'))
+   expect(queryByText('Invalid Credentials')).not.toBeNull()
+  })
+
+  
+
+
+
 })

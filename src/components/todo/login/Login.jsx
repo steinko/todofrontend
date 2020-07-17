@@ -1,12 +1,14 @@
 import React from 'react'
 import {Component} from 'react'
+import  './Login.css'
+
 export default class Login extends Component {
 
     constructor(props) {
         super(props)
         this.state = { username: 'in28minutes',
                        password: '',
-                       showSucessMessage: true,
+                       showSucessMessage: false,
                        hasLoginFailed: false
                      }
         this.handleChange = this.handleChange.bind(this)
@@ -29,7 +31,7 @@ export default class Login extends Component {
            
             console.log('sucessfull login')
             console.log(this.state)
-            this.props.history.push("/welcome")
+            this.props.history.push(`/welcome/${this.state.username}`)
 
         }
         else 
@@ -45,31 +47,49 @@ export default class Login extends Component {
      
 
     render() { return ( 
-        <div> 
-           {this.state.hasLoginFailed && <div>Invalid Credentials</div>}
+            
+            <div>
+        
+           <h1>Login</h1>
+           {this.state.hasLoginFailed && <div><h1 id= "invalid">Invalid Credentials </h1></div>}
+
            {this.state.showSucessMessage && <div>Sucsessfull Loging</div>}
-           <label>
-               User Name:
-               <input 
-                 type='text' 
-                 name='username' 
-                 value= {this.state.username} 
-                 onChange= {this.handleChange}
-              />
-           </label>
+         
+           <div>
+              
+             <div>
+             <label>
+                 User Name: 
+                
+                 <input 
+                   type='text' 
+                   name='username' 
+                   value= {this.state.username} 
+                   onChange= {this.handleChange}
+                />
+             </label>
+             </div>
+             
+             <div>
+               <label>
+                  Password: 
+                  <input 
+                    id="password"
+                    type='password' 
+                    name='password' 
+                    value= {this.state.password} 
+                    onChange= {this.handleChange}
+                  />
+                </label>
+                
+             </div>
+             
 
-           <label>
-              Password: 
-              <input 
-                type='password' 
-                name='password' 
-                value= {this.state.password} 
-                onChange= {this.handleChange}
-              />
-           </label>
-
-           <button onClick= {this.loginClick}>Login</button>
-       </div>
-     ) 
-    }
+             <div>
+                <button id="loginbutton" onClick= {this.loginClick}>Login</button>
+           </div>
+           </div>
+           </div>
+           
+     )}
 }

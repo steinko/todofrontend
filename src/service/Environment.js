@@ -1,10 +1,12 @@
-
  class Environment {
+
   static    serverUrl = ()=> {
-         return  'http://localhost:8080'     
+         return  process.env.BACKEND_URL    
     }
+
    static  env = () => {
-        return 'development'
+        return process.env.ENV
    }
- }  
+ }
+
 export default Environment 

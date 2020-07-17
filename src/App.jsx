@@ -1,7 +1,7 @@
 import React from 'react'
 import {Component} from 'react'
 import TodoApp from './components/todo/todoapp/TodoApp'
-
+import  './Bootstrap.css'
 
 export default class App extends Component { 
     

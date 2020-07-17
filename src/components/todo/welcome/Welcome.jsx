@@ -1,5 +1,6 @@
 import React from 'react'
 import {Component} from 'react'
+import  {Link} from 'react-router-dom'
 import HelloWorldService from  '../../../service/HelloWorldService'
 import HelloWorldBeanService from '../../../service/HelloWorldBeanService'
 
@@ -8,25 +9,28 @@ export default class Welcome extends Component {
         super(pops)
         this.helloWorldService= this.helloWorldService.bind(this)
         this.helloWorldBeanService= this.helloWorldBeanService.bind(this)
-         } 
-
-    state = { welcomMessage: '' } 
+        this.state = { welcomMessage: '' } 
+    } 
 
     render() { 
-        return <div>
-                   Welcome
-                   <div>
+        return ( <div>
+                    <h1 id="welcome">Welcome {this.props.match.params.name} You can  manage youre todos </h1> <Link id='link'  to= "/todos"> here </Link>
+
+                    <div>
                        Click here to displaye hello world
                        <button id='helloWorldButton' onClick={ this.helloWorldService } > Get Welcome Message </button>
-                    <button id='helloWorldBeanButton' onClick={ this.helloWorldBeanService } > Get Welcome Bean Message </button>
-                   </div>
-                   <div id='welcomeMessage'>
+                       <button id='helloWorldBeanButton' onClick={ this.helloWorldBeanService } > Get Welcome Bean Message </button>
+                    </div>
+
+                    <div id='message'>
                        { this.state.welcomMessage } 
-                   </div>
-                   <div>
+                    </div>
+ 
+                    <div>
                        <a href="/todos">Todos</a>
-                   </div>
-            </div>
+                    </div>
+
+                </div>)
      }
 
     async helloWorldService() {   
