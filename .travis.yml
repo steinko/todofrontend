@@ -1,5 +1,12 @@
 language: node_js
 node_js:
   - "stable"
-before_install: npm i
-script: npm test
+before_install: 
+  - npm i
+  - openssl aes-256-cbc -K $encrypted_2fc494336ba1_key -iv $encrypted_2fc494336ba1_iv -in springboot22-09d2decOaca3.json.enc -out springboot22-09d2decOaca3.json -d
+  - tar xvf secrets.tar
+script: npm run test:build
+deploy:
+  provider: gae
+  keyfile: springboot22-09d2ded0aca3.json
+  project: springboot22

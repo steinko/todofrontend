@@ -1,1 +1,2 @@
-BACKEND_URL=http://localhost:8080
+BACKEND_URL=https://todofrontend-dot-springboot22.ew.r.appspot.com
+ENV=test
