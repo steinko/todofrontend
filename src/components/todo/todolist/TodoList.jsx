@@ -16,29 +16,37 @@ export default class TodoList extends Component {
     render() { 
         return (
               <div>
-                 <h1>To do list</h1>
-                 <table>
-                    <thead>
-                        <tr>
-                          <th>id</th>
-                          <th>description</th>
-                          <th>done</th>
-                          <th>taget date </th>
-                          
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {  this.state.todos.map(todo =>
-                          <tr key={todo.id} >
-                            <td> {todo.id}</td>
-                            <td> {todo.description}</td>
-                            <td> {todo.done.toString()}</td>
-                            <td> {todo.targetDate.toString()}</td>
-                           </tr>
-                        )}
-                    </tbody>
-                  </table>
-              </div>
+                <h1>List Todos</h1>
+                {this.state.message && <div class="alert alert-success">{this.state.message}</div>}
+                <div className="container">
+                    <table className="table">
+                        <thead>
+                            <tr>
+                                <th>Id</th> 
+                                <th>Description</th>                             
+                               <th>Target Date</th>
+                                <th>IsCompleted?</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                this.state.todos.map(
+                                    todo =>
+                                        <tr key={todo.id}>
+                                            <td>{todo.id}</td>
+                                            <td>{todo.description}</td>
+                                            <td>{todo.targetDate.toString()}</td>
+                                            <td>{todo.done.toString()}</td>  
+                                        </tr>
+                                )
+                            }
+                        </tbody>
+                    </table>
+                    <div className="row">
+                        <button className="btn btn-success" onClick={this.addTodoClicked}>Add</button>
+                    </div>
+                </div>
+            </div>
         )
    }
 }

@@ -13,24 +13,24 @@ export default class Welcome extends Component {
     } 
 
     render() { 
-        return ( <div>
-                    <h1 id="welcome">Welcome {this.props.match.params.name} You can  manage youre todos </h1> <Link id='link'  to= "/todos"> here </Link>
+        return ( 
+                <>
+                  <h1>Welcome!</h1>
+                  <div className="container">
+                      Welcome {this.props.match.params.name}.
+                      You can manage your todos <Link to="/todos">here</Link>.
+                  </div>
+                  <div className="container">
+                      Click here to get a customized welcome message.
+                      <button onClick={this.retrieveWelcomeMessage}
+                          className="btn btn-success">Get Welcome Message</button>
+                  </div>
+                  <div className="container">
+                      {this.state.welcomeMessage}
+                   </div>
 
-                    <div>
-                       Click here to displaye hello world
-                       <button id='helloWorldButton' onClick={ this.helloWorldService } > Get Welcome Message </button>
-                       <button id='helloWorldBeanButton' onClick={ this.helloWorldBeanService } > Get Welcome Bean Message </button>
-                    </div>
-
-                    <div id='message'>
-                       { this.state.welcomMessage } 
-                    </div>
- 
-                    <div>
-                       <a href="/todos">Todos</a>
-                    </div>
-
-                </div>)
+               </>
+                )
      }
 
     async helloWorldService() {   

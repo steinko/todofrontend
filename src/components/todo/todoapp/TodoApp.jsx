@@ -7,6 +7,9 @@ import Welcome from '../welcome/Welcome';
 import TodoList from '../todolist/TodoList'
 import Header from '../header/Header'
 import Footer from '../footer/Footer'
+import Blank from '../Blank'
+import AuthenticatedRoute from '../autenticatedroute/AuthenticateRoute'
+
 
 export default class TodoApp extends Component 
 {  
@@ -21,12 +24,12 @@ export default class TodoApp extends Component
                      <Header/>
                      
                      <Switch>
-                       <Route path="/" exact          component = {Login}/>
-                       <Route path="/login"           component = {Login}/>
-                       <Route path="/logout"          component = {Logout}/>
-                       <Route path="/welcome/:name"   component = {Welcome}/>
-                       <Route path="/todos"           component = {TodoList}/>
-                       <Route                         component = {ErrorMessage}/>
+                       <Route path="/" exact                        component = {Blank}/>
+                       <Route path="/login"                         component = {Login}/>
+                       <Route path="/logout"                        component = {Logout}/>
+                       <AuthenticatedRoute  path="/welcome/:name"   component = {Welcome}/>
+                       <AuthenticatedRoute path="/todos"            component = {TodoList}/>
+                       <Route                                       component = {ErrorMessage}/>
                      </Switch>
                      <Footer/>
                    </div>

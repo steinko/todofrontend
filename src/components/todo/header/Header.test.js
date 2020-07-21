@@ -1,8 +1,16 @@
 import Header from './Header'
-import { render} from '@testing-library/react'
+import { render, fireEvent} from '@testing-library/react'
 import React from 'react'
 
-it('should exsist a  header components', async  () => {
+it('should exsist a  header components', () => {
 	   let {getByText}  =  render(<Header/>)
-     await  expect(getByText).not.toBeNull()
+     expect(getByText).not.toBeNull()
+  })
+
+  it('should sucessfuly logged out  ', () => {
+   sessionStorage.setItem('authenticatedUser', "user")
+   let { queryByTestId} = render(<Header/>)
+   fireEvent.click( queryByTestId('LogOut'))
+   expect(sessionStorage.getItem('authenticatedUser')).toBeNull()
+
   })

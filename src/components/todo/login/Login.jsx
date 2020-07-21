@@ -1,6 +1,7 @@
 import React from 'react'
 import {Component} from 'react'
-import  './Login.css'
+import AutheniationcService from '../../../service/authenticationService/AutenticationService.js'
+
 
 export default class Login extends Component {
 
@@ -28,7 +29,8 @@ export default class Login extends Component {
 
       loginClick()   {
         if (this.state.username ==='in28minutes' && this.state.password === 'dummy') { 
-           
+            let aut =AutheniationcService
+            aut.registerSucessfulLogin(this.state.username, this.state.password)
             console.log('sucessfull login')
             console.log(this.state)
             this.props.history.push(`/welcome/${this.state.username}`)
