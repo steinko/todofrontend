@@ -11,7 +11,7 @@ describe('test enviromnt', () => {
 
   it('should load SERVER_URL in build enviroment', () => {
       if (Enviromment.env() === 'build') {
-         expect(Enviromment.serverUrl()).toBe('non')
+         expect(Enviromment.serverUrl()).toBe('nourl')
        }
    })
 

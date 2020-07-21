@@ -19,22 +19,5 @@ describe('test hello world service', () => {
     expect(message).toBe('Hello World')
   })
 
-  it('should load  in devekpment enviroment', () => {
-      if (Environment.env() === 'development') {
-         expect(Environment.serverUrl()).toBe('http://localhost:8080')
-       }
-   })
-
-  it('should load SERVER_URL in build enviroment', () => {
-      if (Environment.env() === 'build') {
-         expect(Environment.serverUrl()).toBe('non')
-       }
-   })
-
-  it('should load SERVER_URL in test enviroment', () => {
-      if (Environment.env === 'test') {
-         expect(Environment.serverUrl()).toBe('https://dot-project45916.appspot.com')
-       }
-   })
  })
 

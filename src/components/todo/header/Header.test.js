@@ -2,12 +2,12 @@ import Header from './Header'
 import { render, fireEvent} from '@testing-library/react'
 import React from 'react'
 
-it('should exsist a  header components', () => {
+xit('should exsist a  header components', () => {
 	   let {getByText}  =  render(<Header/>)
      expect(getByText).not.toBeNull()
   })
 
-  it('should sucessfuly logged out  ', () => {
+  xit('should sucessfuly logged out  ', () => {
    sessionStorage.setItem('authenticatedUser', "user")
    let { queryByTestId} = render(<Header/>)
    fireEvent.click( queryByTestId('LogOut'))

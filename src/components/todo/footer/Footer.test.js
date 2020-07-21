@@ -1,8 +1,8 @@
-import  Footer './Footer'
+import  Footer from './Footer'
 import { render} from '@testing-library/react'
 import React from 'react'
 
-it('should exsist a footer components', async  () => {
+it('should exsist a footer components',  () => {
 	   let {getByText}  =  render(<Footer/>)
-     await  expect(getByText).not.toBeNull()
+       expect(getByText).not.toBeNull()
   })

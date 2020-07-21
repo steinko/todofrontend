@@ -7,7 +7,7 @@ import Welcome from '../welcome/Welcome';
 import TodoList from '../todolist/TodoList'
 import Header from '../header/Header'
 import Footer from '../footer/Footer'
-import Blank from '../Blank'
+import Blank from '../blank/Blank'
 import AuthenticatedRoute from '../autenticatedroute/AuthenticateRoute'
 
 
@@ -18,9 +18,9 @@ export default class TodoApp extends Component
 
     render(){
         return(
-           <>
+           <div className="TodoApp">
                <Router>
-                   <div>
+                   <>
                      <Header/>
                      
                      <Switch>
@@ -32,9 +32,11 @@ export default class TodoApp extends Component
                        <Route                                       component = {ErrorMessage}/>
                      </Switch>
                      <Footer/>
-                   </div>
+                   </>
                </Router>
-            </>
+
+            </div>
+           
          )
     }
 

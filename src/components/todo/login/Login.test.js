@@ -57,7 +57,7 @@ it('should failure login ', () => {
    expect(queryByText('Invalid Credentials')).not.toBeNull()
   })
 
-  it('should sucessfuly logged in  ', () => {
+  xit('should sucessfuly logged in  ', () => {
    let { queryByLabelText,getByRole} = render(<Login/>)
    let password = 'dummy'
    let passWordField = queryByLabelText('Password:')
