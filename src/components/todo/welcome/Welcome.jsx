@@ -1,8 +1,8 @@
 import React from 'react'
 import {Component} from 'react'
 import  {Link} from 'react-router-dom'
-import HelloWorldService from  '../../../service/HelloWorldService'
-import HelloWorldBeanService from '../../../service/HelloWorldBeanService'
+import HelloWorldService from  '../../../service/helloworldservice/HelloWorldService'
+import HelloWorldBeanService from '../../../service/helloworldbeanservice/HelloWorldBeanService'
 
 export default class Welcome extends Component {
     constructor(pops){
@@ -22,8 +22,14 @@ export default class Welcome extends Component {
                   </div>
                   <div className="container">
                       Click here to get a customized welcome message.
-                      <button onClick={this.retrieveWelcomeMessage}
+                      <button onClick={ this.helloWorldService}
                           className="btn btn-success">Get Welcome Message</button>
+                  </div>
+
+                  <div className="container">
+                      Click here to get a welcome message.
+                      <button onClick={ this.helloWorldBeanService}
+                          className="btn btn-success">Get Welcome Been Message</button>
                   </div>
                   <div className="container">
                       {this.state.welcomeMessage}
@@ -33,15 +39,23 @@ export default class Welcome extends Component {
                 )
      }
 
-    async helloWorldService() {   
-         const data  = await HelloWorldService.getMessage()
-         console.log(data)
-         this.setState({welcomMessage: data })  
-      } 
+    async helloWorldService() {  
+        try  {
+             const data  = await HelloWorldService.getMessage()
+              console.log(data)
+               this.setState({welcomMessage: data })  
+         } catch (error) {  
+                 this.setState({welcomMessage: error.getMessage() }) 
+             }
+        }
       
-    async helloWorldBeanService() {    
-         const data  = await HelloWorldBeanService.getMessage()
-         console.log(data)
-         this.setState({welcomMessage: data })  
+    async helloWorldBeanService() { 
+         try  {  
+                 const data  = await HelloWorldBeanService.getMessage()
+                 console.log(data)
+                this.setState({welcomMessage: data })  
+            } catch (error) {  
+
+             }
       }   
 }

@@ -1,15 +1,34 @@
 import React from 'react'
 import {Component} from 'react'
+import TodosService from '../../../service/todoservice/TodosService.js'
 
 export default class TodoList extends Component { 
+
     constructor() { 
         super()
         this.state = {
-           todos : [
-                     { id: 1, description : 'Learn React', done:false, targetDate:new Date() },
-                     { id: 2, description : 'Learn to dance', done:false, targetDate: new Date()}
-                   ]
+           todos : [],
+           message : ''
         }
+        this.refreshTodos = this.refreshTodos.bind(this)
+        this.deleteTodo = this.deleteTodo.bind(this)
+    }
+
+    async componentDidMount(){  
+       this.refreshTodos()
+    }
+
+    async refreshTodos () {
+         let result = await TodosService.getTodos("stein")
+         console.log(result)
+         this.setState({todos:result })
+    }
+
+
+    async deleteTodo() {  
+        await TodosService.deleteTodos("stein","0")
+        this.refreshTodos()
+ 
     }
 
 
@@ -22,9 +41,8 @@ export default class TodoList extends Component {
                     <table className="table">
                         <thead>
                             <tr>
-                                <th>Id</th> 
                                 <th>Description</th>                             
-                               <th>Target Date</th>
+                                <th>Target Date</th>
                                 <th>IsCompleted?</th>
                             </tr>
                         </thead>
@@ -33,17 +51,17 @@ export default class TodoList extends Component {
                                 this.state.todos.map(
                                     todo =>
                                         <tr key={todo.id}>
-                                            <td>{todo.id}</td>
                                             <td>{todo.description}</td>
                                             <td>{todo.targetDate.toString()}</td>
-                                            <td>{todo.done.toString()}</td>  
+                                            <td>{todo.isDone.toString()}</td>  
                                         </tr>
                                 )
                             }
                         </tbody>
                     </table>
                     <div className="row">
-                        <button className="btn btn-success" onClick={this.addTodoClicked}>Add</button>
+                          <button className="btn btn-success" onClick={this.addTodoClicked}>Add</button>
+                          <button className="btn btn-success" onClick={this.deleteTodoClicked}>Delete</button>
                     </div>
                 </div>
             </div>

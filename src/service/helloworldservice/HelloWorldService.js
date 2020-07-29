@@ -1,20 +1,19 @@
-import Enviroment from './Environment'
-//import Logger from './Logger'
-
+import Enviroment from '../Environment'
+import Logger from '../Logger'
 
 class HelloWorldService {
   
   async getMessage () {
-     //let logger = Logger.getLogger()
+     let logger = Logger.getLogger()
      try {
        //logger.info('HelloWorldService')
-       let response = await fetch(Enviroment.serverUrl() +'/hello-world')
+       let urlstring= Enviroment.serverUrl() + '/hello-world'
+       let response = await fetch(urlstring)
        ///logger.info('Response:',response)
        let text = await response.text()
-       //logger.info('Resonse Text',text)
         return  text
     } catch(error)  { 
-        //logger.error('Hello World Service',error)
+        logger.error('error')
         throw error
     }
   }

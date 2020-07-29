@@ -1,9 +1,11 @@
- import Enviroment from './Environment'
+ import Enviroment from '../Environment'
  //import Logger from './Logger'
 
  class HelloWorldBeanService {
+    
+
   
-  async getMessage () {
+  async getMessage() {
     //let logger = Logger.getLogger();
     try {
       
@@ -24,4 +26,4 @@
 
    }
 }
-export default new HelloWorldBeanService()
+export default HelloWorldBeanService
