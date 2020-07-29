@@ -1,10 +1,10 @@
-import {render, fireEvent } from '@testing-library/react'
+import {render } from '@testing-library/react'
 import '@testing-library/jest-dom/extend-expect'
 import React from 'react'
-import LogOut from './LogOut'
+import Logout from './Logout'
 
 
 it('should exsist a  logout component', () => {
-	   let {getByText}  =  render(<LogOut/>)
+	   let {getByText}  =  render(<Logout/>)
      expect(getByText).not.toBeNull()
   })
