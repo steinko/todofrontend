@@ -1,7 +1,7 @@
  class Environment {
 
   static    serverUrl = ()=> {
-         return  "http://localhost:8080";   
+         return process.env.BACKEND_URL   
     }
 
    static  env = () => {
