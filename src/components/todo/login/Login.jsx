@@ -64,6 +64,7 @@ export default class Login extends Component {
                  User Name: 
                 
                  <input 
+                   id = 'username'
                    type='text' 
                    name='username' 
                    value= {this.state.username} 
@@ -88,7 +89,11 @@ export default class Login extends Component {
              
 
              <div>
-                <button id="loginbutton" onClick= {this.loginClick}>Login</button>
+                <button 
+                  id="loginButton" 
+                  onClick= {this.loginClick}>
+                  Login
+                </button>
            </div>
            </div>
            </div>

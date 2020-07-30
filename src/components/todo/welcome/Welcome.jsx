@@ -15,10 +15,10 @@ export default class Welcome extends Component {
     render() { 
         return ( 
                 <>
-                  <h1>Welcome!</h1>
+                  <h1 id="welcom">Welcome!</h1>
                   <div className="container">
                       Welcome {this.props.match.params.name}.
-                      You can manage your todos <Link to="/todos">here</Link>.
+                      You can manage your todos <Link id='todoLink' to="/todos">here</Link>.
                   </div>
                   <div className="container">
                       Click here to get a customized welcome message.

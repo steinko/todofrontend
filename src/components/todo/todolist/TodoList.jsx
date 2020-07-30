@@ -51,7 +51,7 @@ export default class TodoList extends Component {
                                 this.state.todos.map(
                                     todo =>
                                         <tr key={todo.id}>
-                                            <td>{todo.description}</td>
+                                            <td className= "todoDescription" >{todo.description}</td>
                                             <td>{todo.targetDate.toString()}</td>
                                             <td>{todo.isDone.toString()}</td>  
                                         </tr>
