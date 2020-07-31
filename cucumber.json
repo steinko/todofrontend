@@ -1,0 +1,9 @@
+{
+  "testMatch": [
+      "**/*.steps.js"
+	],
+	
+    "transform": {
+      "^.+\\.jsx?$": "babel-jest"
+    }
+}

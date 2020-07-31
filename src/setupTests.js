@@ -13,7 +13,8 @@ module.exports = {
                 "description": " unit and interation tests of the freontend of the todo application",
             }
         ]
-    ] 
+    ] ,
+    
 }
 
 

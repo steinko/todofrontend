@@ -55,7 +55,7 @@ export default class Login extends Component {
            <h1>Login</h1>
            {this.state.hasLoginFailed && <div><h1 id= "invalid">Invalid Credentials </h1></div>}
 
-           {this.state.showSucessMessage && <div>Sucsessfull Loging</div>}
+           {this.state.showSucessMessage && <div>Sucsessfull Login</div>}
          
            <div>
               
@@ -91,6 +91,7 @@ export default class Login extends Component {
              <div>
                 <button 
                   id="loginButton" 
+                  data-testid="Login"
                   onClick= {this.loginClick}>
                   Login
                 </button>
