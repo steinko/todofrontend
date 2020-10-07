@@ -28,12 +28,13 @@ export default class Login extends Component {
       }
 
       loginClick()   {
+
         if (this.state.username ==='in28minutes' && this.state.password === 'dummy') { 
             let aut =AutheniationcService
             aut.registerSucessfulLogin(this.state.username, this.state.password)
             console.log('sucessfull login')
             console.log(this.state)
-            this.props.history.push(`/welcome/${this.state.username}`)
+           // this.props.history.push(`/welcome/${this.state.username}`)
 
         }
         else 
@@ -48,56 +49,44 @@ export default class Login extends Component {
       }
      
 
-    render() { return ( 
-            
-            <div>
-        
-           <h1>Login</h1>
-           {this.state.hasLoginFailed && <div><h1 id= "invalid">Invalid Credentials </h1></div>}
+    render() { return (           
+                <div>
 
-           {this.state.showSucessMessage && <div>Sucsessfull Login</div>}
-         
-           <div>
+
+                  <h1>Login</h1>
+                     {this.state.hasLoginFailed && <h1 id= "invalid">Invalid Credentials </h1>}
+                     {this.state.showSucessMessage &&<h1>Sucsessfull Login</h1>}
+                
+                  <label>
+                    User Name:
+                    <input 
+                      id = 'username'
+                      type='text' 
+                      name='username' 
+                      value= {this.state.username} 
+                      onChange= {this.handleChange}
+                    />
+                  </label>
+             
+                  <label>
+                    Password: 
+                    <input 
+                      id="password"
+                      type='password' 
+                      name='password' 
+                      value= {this.state.password} 
+                      onChange= {this.handleChange}
+                    />
+                  </label>
               
-             <div>
-             <label>
-                 User Name: 
-                
-                 <input 
-                   id = 'username'
-                   type='text' 
-                   name='username' 
-                   value= {this.state.username} 
-                   onChange= {this.handleChange}
-                />
-             </label>
-             </div>
-             
-             <div>
-               <label>
-                  Password: 
-                  <input 
-                    id="password"
-                    type='password' 
-                    name='password' 
-                    value= {this.state.password} 
-                    onChange= {this.handleChange}
-                  />
-                </label>
-                
-             </div>
-             
+                  <button 
+                    id="loginButton" 
+                    data-testid="Login"
+                    onClick= {this.loginClick}>
+                    Login
+                  </button>
 
-             <div>
-                <button 
-                  id="loginButton" 
-                  data-testid="Login"
-                  onClick= {this.loginClick}>
-                  Login
-                </button>
-           </div>
-           </div>
-           </div>
-           
-     )}
+
+              </div> 
+          )}
 }

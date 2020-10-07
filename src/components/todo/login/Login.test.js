@@ -8,15 +8,15 @@ describe(' Unit tests of  Login component', () => {
   
   
 
-  it('should exsist a  login components', async  () => {
+  it('should exsist a  login components',  () => {
 	   let {getByLabelText}  =  render(<Login/>)
-     await  expect(getByLabelText).not.toBeNull()
+      expect(getByLabelText).not.toBeNull()
   })
 
-  it('should exist a user name', async () => {
-     let {getByLabelText} =  render(<Login/>)
-    expect(await getByLabelText('User Name:').value).toBe('in28minutes')
-  })
+  // it('should exist a user name', () => {
+  //   let {getByLabelText} =  render(<Login/>)
+  //  expect(geByLabelText('User Name:').value).toBe('in28minutes')
+  // })
 
   it('should exist a password', async () => {
      let {getByLabelText} =  render(<Login/>)
@@ -49,20 +49,21 @@ it ('shold display entered password', () => {
 })
 
 it('should failure login ', () => {
-   let { queryByLabelText,getByRole, queryByText} = render(<Login/>)
+   let { queryByLabelText,getByTestId, queryByText} = render(<Login/>)
    let entry = 'cool password'
    let passWordField = queryByLabelText('Password:')
    fireEvent.change(passWordField, { target: { value:  entry } })
-   fireEvent.click(getByRole('button'))
+   fireEvent.click(getByTestId("Login"))
    expect(queryByText('Invalid Credentials')).not.toBeNull()
+   expect(sessionStorage.getItem('authenticatedUser')).toBeNull()
   })
 
-  xit('should sucessfuly logged in  ', () => {
-   let { queryByLabelText,getByRole} = render(<Login/>)
+  it('should sucessfuly logged in  ', () => {
+   let { queryByLabelText,getByTestId,getByRole} = render(<Login/>)
    let password = 'dummy'
    let passWordField = queryByLabelText('Password:')
    fireEvent.change(passWordField, { target: { value:  password } })
-   fireEvent.click(getByRole('button'))
+   fireEvent.click(getByTestId("Login"))
    expect(sessionStorage.getItem('authenticatedUser')).toBe('in28minutes')
 
   })

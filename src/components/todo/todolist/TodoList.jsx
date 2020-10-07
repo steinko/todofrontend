@@ -1,6 +1,7 @@
 import React from 'react'
 import {Component} from 'react'
 import TodosService from '../../../service/todoservice/TodosService.js'
+import AutenticationService from '../../../service/authenticationService/AutenticationService'
 
 export default class TodoList extends Component { 
 
@@ -11,7 +12,8 @@ export default class TodoList extends Component {
            message : ''
         }
         this.refreshTodos = this.refreshTodos.bind(this)
-        this.deleteTodo = this.deleteTodo.bind(this)
+        this.deleteTodoClicked = this.deleteTodoClicked.bind(this)
+         this.updateTodoClicked = this.updateTodoClicked.bind(this)
     }
 
     async componentDidMount(){  
@@ -25,9 +27,16 @@ export default class TodoList extends Component {
     }
 
 
-    async deleteTodo() {  
-        await TodosService.deleteTodos("stein","0")
+    async deleteTodoClicked(id) {  
+       let  userName = AutenticationService.getUserName()
+        await TodosService.deleteTodo(userName,id)
+        this.setState( {message:"Sucessull deleted todo item" } )
         this.refreshTodos()
+ 
+    }
+
+    async updateTodoClicked(id) {  
+       this.props.history.push(`/todo/${id}`)
  
     }
 
@@ -44,6 +53,8 @@ export default class TodoList extends Component {
                                 <th>Description</th>                             
                                 <th>Target Date</th>
                                 <th>IsCompleted?</th>
+                                <th>Update</th>
+                                <th>Delete</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -53,7 +64,23 @@ export default class TodoList extends Component {
                                         <tr key={todo.id}>
                                             <td className= "todoDescription" >{todo.description}</td>
                                             <td>{todo.targetDate.toString()}</td>
-                                            <td>{todo.isDone.toString()}</td>  
+                                            <td>{todo.isDone.toString()}</td> 
+
+                                            <td>
+                                                <button 
+                                                   className="btn btn-success" 
+                                                   onClick={() => this.updateTodoClicked(todo.id)}>
+                                                   Update
+                                                </button>
+                                            </td> 
+
+                                            <td>
+                                                <button 
+                                                   className="btn btn-success" 
+                                                   onClick={() => this.deleteTodoClicked(todo.id)}>
+                                                   Delete
+                                                </button>
+                                            </td> 
                                         </tr>
                                 )
                             }

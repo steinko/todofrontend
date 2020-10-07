@@ -8,28 +8,32 @@ import TodoList from '../todolist/TodoList'
 import Header from '../header/Header'
 import Footer from '../footer/Footer'
 import Blank from '../blank/Blank'
+import TodoComponent from '../todocomponent/TodoComponent'
 import AuthenticatedRoute from '../autenticatedroute/AuthenticateRoute'
+import { ApmRoute } from '@elastic/apm-rum-react'
 
 
 export default class TodoApp extends Component 
-{  
+{          
+          
     
 
-
     render(){
+              
         return(
            <div className="TodoApp">
-               <Router>
+               <Router >
                    <>
                      <Header/>
                      
                      <Switch>
-                       <Route path="/" exact                        component = {Blank}/>
-                       <Route path="/login"                         component = {Login}/>
-                       <Route path="/logout"                        component = {Logout}/>
+                       <ApmRoute path="/" exact                        component = {Blank}/>
+                       <ApmRoute path="/login"                         component = {Login}/>
+                       <ApmRoute path="/logout"                        component = {Logout}/>
                        <AuthenticatedRoute  path="/welcome/:name"   component = {Welcome}/>
                        <AuthenticatedRoute path="/todos"            component = {TodoList}/>
-                       <Route                                       component = {ErrorMessage}/>
+                       <AuthenticatedRoute path="/todo"             component = {TodoComponent}/>
+                       <ApmRoute                                       component = {ErrorMessage}/>
                      </Switch>
                      <Footer/>
                    </>

@@ -15,7 +15,7 @@ export default class Welcome extends Component {
     render() { 
         return ( 
                 <>
-                  <h1 id="welcom">Welcome!</h1>
+                  <h1 id="welcome">Welcome!</h1>
                   <div className="container">
                       Welcome {this.props.match.params.name}.
                       You can manage your todos <Link id='todoLink' to="/todos">here</Link>.
