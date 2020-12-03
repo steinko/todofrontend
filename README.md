@@ -1,1 +1,1 @@
-Frontend component for the Todo Applucation
+Frontend component for the Todo Application
