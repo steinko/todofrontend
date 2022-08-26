@@ -16,7 +16,7 @@
     "react-dom": "^16.13.1",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "^3.4.1",
+    "react-scripts": "^5.0.0",
     "use-react-router": "^1.0.7",
     "winston": "^3.3.3",
     "winston-elasticsearch": "^0.7.12"
