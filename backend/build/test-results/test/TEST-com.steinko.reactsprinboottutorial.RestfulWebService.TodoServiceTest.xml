@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.steinko.reactsprinboottutorial.RestfulWebService.TodoServiceTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2022-08-30T11:53:53" hostname="Steins-MacBook-Pro.local" time="0.665">
+  <properties/>
+  <testcase name="shoulCreateTodo()" classname="com.steinko.reactsprinboottutorial.RestfulWebService.TodoServiceTest" time="0.625"/>
+  <testcase name="shouldDeleteTodo()" classname="com.steinko.reactsprinboottutorial.RestfulWebService.TodoServiceTest" time="0.003"/>
+  <testcase name="ShouldExist()" classname="com.steinko.reactsprinboottutorial.RestfulWebService.TodoServiceTest" time="0.004"/>
+  <testcase name="shouldretunTodos()" classname="com.steinko.reactsprinboottutorial.RestfulWebService.TodoServiceTest" time="0.012"/>
+  <system-out><![CDATA[13:53:54.517 [Test worker] DEBUG org.hibernate.validator.internal.xml.config.ValidationXmlParser - Trying to load META-INF/validation.xml for XML based Validator configuration.
+13:53:54.518 [Test worker] DEBUG org.hibernate.validator.internal.xml.config.ResourceLoaderHelper - Trying to load META-INF/validation.xml via TCCL
+13:53:54.521 [Test worker] DEBUG org.hibernate.validator.internal.xml.config.ResourceLoaderHelper - Trying to load META-INF/validation.xml via Hibernate Validator's class loader
+13:53:54.525 [Test worker] DEBUG org.hibernate.validator.internal.xml.config.ValidationXmlParser - No META-INF/validation.xml found. Using annotation based configuration only.
+13:53:54.528 [Test worker] DEBUG org.hibernate.validator.internal.engine.resolver.TraversableResolvers - Found javax.persistence.Persistence on classpath containing 'getPersistenceUtil'. Assuming JPA 2 environment. Trying to instantiate JPA aware TraversableResolver
+13:53:54.529 [Test worker] DEBUG org.hibernate.validator.internal.engine.resolver.TraversableResolvers - Instantiated JPA aware TraversableResolver of type org.hibernate.validator.internal.engine.resolver.JPATraversableResolver.
+13:53:54.531 [Test worker] DEBUG org.hibernate.validator.messageinterpolation.ResourceBundleMessageInterpolator - Loaded expression factory via original TCCL
+13:53:54.538 [Test worker] DEBUG org.hibernate.validator.internal.engine.ValidatorFactoryConfigurationHelper - HV000252: Using org.hibernate.validator.internal.engine.DefaultPropertyNodeNameProvider as property node name provider.
+13:53:54.539 [Test worker] DEBUG org.hibernate.validator.internal.engine.ValidatorFactoryConfigurationHelper - HV000234: Using org.hibernate.validator.messageinterpolation.ResourceBundleMessageInterpolator as ValidatorFactory-scoped message interpolator.
+13:53:54.540 [Test worker] DEBUG org.hibernate.validator.internal.engine.ValidatorFactoryConfigurationHelper - HV000234: Using org.hibernate.validator.internal.engine.resolver.JPATraversableResolver as ValidatorFactory-scoped traversable resolver.
+13:53:54.541 [Test worker] DEBUG org.hibernate.validator.internal.engine.ValidatorFactoryConfigurationHelper - HV000234: Using org.hibernate.validator.internal.util.ExecutableParameterNameProvider as ValidatorFactory-scoped parameter name provider.
+13:53:54.542 [Test worker] DEBUG org.hibernate.validator.internal.engine.ValidatorFactoryConfigurationHelper - HV000234: Using org.hibernate.validator.internal.engine.DefaultClockProvider as ValidatorFactory-scoped clock provider.
+13:53:54.542 [Test worker] DEBUG org.hibernate.validator.internal.engine.ValidatorFactoryConfigurationHelper - HV000234: Using org.hibernate.validator.internal.engine.scripting.DefaultScriptEvaluatorFactory as ValidatorFactory-scoped script evaluator factory.
+13:53:54.654 [Test worker] INFO com.steinko.reactsprinboottutorial.RestfulWebService.TodoService - stein
+13:53:54.657 [Test worker] INFO com.steinko.reactsprinboottutorial.RestfulWebService.TodoService - Stein
+13:53:54.657 [Test worker] INFO com.steinko.reactsprinboottutorial.RestfulWebService.TodoService - Fix Mutter
+13:53:54.657 [Test worker] INFO com.steinko.reactsprinboottutorial.RestfulWebService.TodoService - Stein
+13:53:54.657 [Test worker] INFO com.steinko.reactsprinboottutorial.RestfulWebService.TodoService - Fix Kjakk
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

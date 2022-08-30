@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>TodoTestData.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">todobackend</a> &gt; <a href="index.source.html" class="el_package">com.steinko.reactsprinboottutorial.RestfulWebService</a> &gt; <span class="el_source">TodoTestData.java</span></div><h1>TodoTestData.java</h1><pre class="source lang-java linenums">package com.steinko.reactsprinboottutorial.RestfulWebService;
+
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.steinko.reactsprinboottutorial.DateFactory;
+import com.fasterxml.jackson.core.JsonProcessingException;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+
+public class TodoTestData {
+	private List&lt;Todo&gt; todos;
+	private String todosjson;
+<span class="nc" id="L19">	private static final Logger logger = LoggerFactory.getLogger(TodoTestData.class);</span>
+	
+<span class="nc" id="L21">	public TodoTestData ()  {</span>
+<span class="nc" id="L22">		 Date date = DateFactory.generetDate(&quot;01-01-2020 12:00:00&quot;);	</span>
+<span class="nc" id="L23">	  todos = new ArrayList&lt;Todo&gt;();</span>
+<span class="nc" id="L24">	  todos.add(new Todo( &quot;stein&quot;, &quot;Fix mutter&quot;, date, false));</span>
+<span class="nc" id="L25">	  todos.add(new Todo( &quot;stein&quot;, &quot;Fix kajakk&quot;, date, false));</span>
+			  
+<span class="nc" id="L27">	   ObjectMapper objectMapper = new ObjectMapper();</span>
+	   
+	   try {
+	   
+<span class="nc" id="L31">         todosjson =   objectMapper.writeValueAsString(todos);</span>
+<span class="nc" id="L32">	   } catch (JsonProcessingException ex)</span>
+	   {
+<span class="nc" id="L34">		   logger.info(ex.getMessage());</span>
+<span class="nc" id="L35">	   }</span>
+<span class="nc" id="L36">	  }</span>
+
+	public List&lt;Todo&gt; getTodos() {
+<span class="nc" id="L39">		return todos;</span>
+	}
+
+	public String getTodosJson() {
+<span class="nc" id="L43">		return todosjson;</span>
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

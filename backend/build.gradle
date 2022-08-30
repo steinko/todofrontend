@@ -1,0 +1,101 @@
+plugins { 
+              id 'com.softeq.gradle.itest' version '1.0.4'
+	          id 'org.springframework.boot' version '2.3.3.RELEASE'
+	          id "io.spring.dependency-management" version "1.0.11.RELEASE"
+			  id "org.sonarqube" version "3.0"
+			  id 'java'
+			  id  'eclipse' 
+			  id 'jacoco' 
+			//  id 'checkstyle' 
+	  }
+	  
+repositories {
+    jcenter()
+}
+
+jacoco {
+    toolVersion = "0.8.6"
+    reportsDir = file("$buildDir/customJacocoReportDir")
+}
+
+
+sourceCompatibility = '14'
+
+jacocoTestReport {
+    dependsOn test 
+     reports {
+        xml.enabled true
+     }
+}
+
+sourceSets {
+	intTest {
+	    compileClasspath += sourceSets.main.output
+        runtimeClasspath += sourceSets.main.output
+	}
+	
+}
+
+configurations {
+	intTestImplementation.extendsFrom implementation
+	intTestRuntimeOnly.extendsFrom runtimeOnly
+	
+}
+
+dependencies {
+    
+     implementation 'org.springframework.boot:spring-boot-starter-web:2.4.2'
+	 implementation  'org.springframework.boot:spring-boot-starter-data-jpa:2.4.2'
+	 implementation 'org.modelmapper:modelmapper:2.3.8'
+	 implementation 'javax.validation:validation-api:2.0.1.Final'
+	 implementation 'org.springframework.boot:spring-boot-starter-validation:2.4.2'
+	 implementation 'org.modelmapper:modelmapper:2.3.8'
+	 implementation 'org.postgresql:postgresql:42.2.16'
+	 
+	 testImplementation 'org.springframework.boot:spring-boot-starter-test:2.4.2' 
+     testImplementation 'io.rest-assured:spring-mock-mvc:4.3.1'
+	 testImplementation  'io.rest-assured:rest-assured-common:4.3.1'
+     
+	 itestImplementation 'org.springframework.boot:spring-boot-starter-test:2.4.2'
+	 itestImplementation 'io.rest-assured:spring-mock-mvc:4.1.2'
+	 itestImplementation 'io.rest-assured:rest-assured-common:4.3.1'
+}
+
+test {
+    useJUnitPlatform()
+    finalizedBy jacocoTestReport
+}
+
+
+
+integrationTest {
+    useJUnitPlatform()
+    systemProperty 'spring.profiles.active', 'dev'
+}
+
+
+
+project.tasks["sonarqube"].dependsOn "jacocoTestReport"
+
+sonarqube {
+    properties {
+        property "sonar.sourceEncoding", "UTF-8"
+        property "sonar.host.url", "https://sonarcloud.io/"
+        property "sonar.sources", "src/main/java"
+        property "sonar.login","730e95d52b7508b871eed7bcc07299b806b9ba83"
+        property "sonar.organization" , "steinko-github"
+        property "sonar.projectKey", "todobackend"
+    }
+  } 
+  
+  //tasks.withType(Checkstyle) {
+  //  reports {
+ //       xml.enabled false
+ //       html.enabled true
+ //   }
+//}
+
+
+bootRun {
+  args = ["--spring.profiles.active=test"]
+}  

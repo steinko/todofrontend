@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Todo.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">todobackend</a> &gt; <a href="index.source.html" class="el_package">com.steinko.reactsprinboottutorial.RestfulWebService</a> &gt; <span class="el_source">Todo.java</span></div><h1>Todo.java</h1><pre class="source lang-java linenums">package com.steinko.reactsprinboottutorial.RestfulWebService;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+
+import javax.persistence.Column;
+import javax.persistence.Table;
+import java.io.Serializable;
+import java.util.Date;
+
+
+@Entity
+
+@Table(name = &quot;todo&quot;)
+public class Todo implements Serializable  {
+	private static final long serialVersionUID = -2343243243242432341L;
+	
+	/**
+	 * Id for a todo.
+	 */
+	@Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
+	
+	
+	@Column(name = &quot;name&quot;)
+	private String name;	
+	private String description;
+	private Date targetDate;
+	private Boolean isDone;
+	
+<span class="fc" id="L34">	protected Todo() {</span>
+		
+<span class="fc" id="L36">	}</span>
+	
+	/**
+	    * Get the id of the todo.
+	    * @return id for the todo
+	    */
+	public Long getId() {
+<span class="fc" id="L43">	   		return id;</span>
+	    }
+	
+	
+<span class="fc" id="L47">	public Todo(String name, String description, Date targetDate, boolean isDone) {</span>
+<span class="fc" id="L48">		this.name = name;</span>
+<span class="fc" id="L49">		this.description = description;</span>
+<span class="fc" id="L50">		this.targetDate = targetDate;</span>
+<span class="fc" id="L51">		this.isDone = isDone;</span>
+<span class="fc" id="L52">	}</span>
+
+
+
+	public void setName( String name) {
+<span class="fc" id="L57">		 this.name = name;</span>
+<span class="fc" id="L58">	}</span>
+	
+	public String getName() {
+<span class="fc" id="L61">		return this.name;</span>
+	}
+
+	
+	public String getDescription() {
+<span class="fc" id="L66">		return this.description;</span>
+	}
+
+	
+	public Date getTargetDate() {
+<span class="fc" id="L71">		return this.targetDate;</span>
+	}
+
+
+	public Boolean getIsDone() {
+<span class="fc" id="L76">		return this.isDone;</span>
+	}
+
+
+
+	public void setId(Long id) {
+<span class="fc" id="L82">		this.id = id;</span>
+<span class="fc" id="L83">	}</span>
+
+
+	public void setDescription(String description) {
+<span class="fc" id="L87">		this.description = description;</span>
+<span class="fc" id="L88">	}</span>
+
+
+	public void setTargetDate(Date targetDate) {
+<span class="fc" id="L92">		this.targetDate = targetDate;</span>
+<span class="fc" id="L93">	}</span>
+
+
+	public void setIsDone(Boolean isDone) {
+<span class="fc" id="L97">		this.isDone = isDone;</span>
+<span class="fc" id="L98">	}</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

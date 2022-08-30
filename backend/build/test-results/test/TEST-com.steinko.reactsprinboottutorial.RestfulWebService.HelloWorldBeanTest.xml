@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.steinko.reactsprinboottutorial.RestfulWebService.HelloWorldBeanTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2022-08-30T11:53:46" hostname="Steins-MacBook-Pro.local" time="0.109">
+  <properties/>
+  <testcase name="shouldChangeMessage()" classname="com.steinko.reactsprinboottutorial.RestfulWebService.HelloWorldBeanTest" time="0.091"/>
+  <testcase name="shoulReciveToString()" classname="com.steinko.reactsprinboottutorial.RestfulWebService.HelloWorldBeanTest" time="0.003"/>
+  <testcase name="shouldRecieMessage()" classname="com.steinko.reactsprinboottutorial.RestfulWebService.HelloWorldBeanTest" time="0.003"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
