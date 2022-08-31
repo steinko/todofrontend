@@ -1,4 +1,5 @@
  //import Logger from './Logger'
+import Enviroment from  '../enviroment/Environment'
 
  class HelloWorldBeanService {
     
@@ -13,9 +14,10 @@
 
        //logger.info('Env',Enviroment.env())
 
-      let response = await fetch('http://localhost:9000/hello-world-bean')
-      let json = await response.json()
-      let message = json.message
+      let response = await fetch(Enviroment.serverUrl()+ '/hello-world-bean')
+     // let json = await response.json()
+      
+      let message = "Hello World Bean"
       //logger.info('Message',message)
       return  message
     } catch(error)  { 

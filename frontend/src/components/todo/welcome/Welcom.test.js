@@ -4,11 +4,6 @@ import React from 'react'
 import {render, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom/extend-expect'
 
-import { shallow } from 'enzyme'
-import Adapter from 'enzyme-adapter-react-16'
-import Enzyme from 'enzyme'
-
-Enzyme.configure({ adapter: new Adapter() })
 
 describe(' test existence of Welcome', () => {
 
@@ -30,7 +25,7 @@ describe(' test existence of Welcome', () => {
 
   xit('should display click hear', () => {
     let {getByText}  =  render(<Welcom/>)
-     expect(getText('Click here')).not.toBeNull()
+     expect(getByText('Click here')).not.toBeNull()
   })
 
 

@@ -1,35 +1,28 @@
 {
-  "name": "bankpresenter",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "react": "^16.14.0",
-    "react-dom": "^16.14.0",
-    "react-scripts": "^3.4.4",
-    "regenerator-runtime": "^0.13.9"
-  },
+  "name": "frontend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.3.0",
+    "jest-fetch-mock": "^3.0.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.3.0",
+    "react-scripts": "^5.0.1",
+    "winston": "^3.8.1",
+    "winston-elasticsearch": "^0.17.1"
   },
   "devDependencies": {
-    "msw": "^0.39.2"
-  },
-  "msw": {
-    "workerDirectory": "public"
+    "msw": "^0.46.0"
   }
 }

@@ -1,10 +1,9 @@
 import Enviroment from '../enviroment/Environment'
-import Logger from '../logger/Logger'
 
 class HelloWorldService {
   
   async getMessage () {
-     let logger = Logger.getLogger()
+     
      try {
        //logger.info('HelloWorldService')
        let urlstring= Enviroment.serverUrl() + '/hello-world'
@@ -13,7 +12,7 @@ class HelloWorldService {
        let text = await response.text()
         return  text
     } catch(error)  { 
-        logger.error('error')
+        console.error(error)
         throw error
     }
   }

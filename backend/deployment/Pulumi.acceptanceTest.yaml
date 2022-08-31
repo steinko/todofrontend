@@ -1,0 +1,3 @@
+config:
+  aws:region: eu-north-1
+  todobackend:DATABASE_URL: jdbc:postgresql://database7bfc184.cquqlhmuebcb.eu-north-1.rds.amazonaws.com

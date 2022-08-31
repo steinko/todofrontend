@@ -1,5 +1,5 @@
-import  Environment from '../Environment'
-import HelloWorldPathService from '../HelloWorldPathService'
+import  Environment from '../enviroment/Environment'
+import HelloWorldPathService from './HelloWorldPathService'
 
 beforeAll( async ()=>  { 
        
