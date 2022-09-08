@@ -1,6 +1,5 @@
 import React from 'react'
 import {Component} from 'react'
-import AutheniationcService from '../../../service/authenticationService/AutenticationService.js'
 
 
 export default class Login extends Component {
@@ -9,7 +8,7 @@ export default class Login extends Component {
         super(props)
         this.state = { username: 'in28minutes',
                        password: '',
-                       showSucessMessage: false,
+                       showSucessMessage: true,
                        hasLoginFailed: false
                      }
         this.handleChange = this.handleChange.bind(this)
@@ -30,12 +29,9 @@ export default class Login extends Component {
       loginClick()   {
 
         if (this.state.username ==='in28minutes' && this.state.password === 'dummy') { 
-            let aut =AutheniationcService
-            aut.registerSucessfulLogin(this.state.username, this.state.password)
             console.log('sucessfull login')
             console.log(this.state)
-           // this.props.history.push(`/welcome/${this.state.username}`)
-
+            this.props.history.push("/welcome/stein")
         }
         else 
          {
@@ -55,8 +51,7 @@ export default class Login extends Component {
 
                   <h1>Login</h1>
                      {this.state.hasLoginFailed && <h1 id= "invalid">Invalid Credentials </h1>}
-                     {this.state.showSucessMessage &&<h1>Sucsessfull Login</h1>}
-                
+                   
                   <label>
                     User Name:
                     <input 

@@ -1,7 +1,7 @@
 import React from 'react'
 import {Component} from 'react'
 import TodosService from '../../../service/todoservice/TodosService.js'
-import AutenticationService from '../../../service/authenticationService/AutenticationService'
+
 
 export default class TodoList extends Component { 
 
@@ -28,7 +28,7 @@ export default class TodoList extends Component {
 
 
     async deleteTodoClicked(id) {  
-       let  userName = AutenticationService.getUserName()
+       let  userName = ''
         await TodosService.deleteTodo(userName,id)
         this.setState( {message:"Sucessull deleted todo item" } )
         this.refreshTodos()

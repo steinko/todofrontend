@@ -6,13 +6,13 @@ beforeEach('', () => {
 
 })
 
-it('should diplay a hello world message on welcome page', ()=>{
+xit('should diplay a hello world message on welcome page', ()=>{
      
       cy.get('button').contains('Get Welcome Message').click()
       cy.contains('Hello World')
    })
 
-   it('should diplay a hello world bean message on welcome page', ()=>{
+   xit('should diplay a hello world bean message on welcome page', ()=>{
      
       cy.get('button').contains('Get Welcome Bean Message').click()
       cy.contains('Hello World Bean')

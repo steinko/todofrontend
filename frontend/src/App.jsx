@@ -3,13 +3,13 @@ import {Component} from 'react'
 import TodoApp from './components/todo/todoapp/TodoApp'
 
 export default class App extends Component { 
-    constructor (history) { 
-        super()  
-        this.history = history
+    constructor (props) { 
+        super(props)  
+        
     }
 
 
     render()  { 
-            return (<TodoApp />)
+            return (<TodoApp history={this.props.history} />)
         }
 }

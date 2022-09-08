@@ -1,7 +1,7 @@
 Feature: Loging
 
  I want to login to todo app
- 
+@ignore
 @focus 
 Scenario: Sucessfull Login
 Given I am logged out
@@ -9,6 +9,7 @@ When I enter the password "dummy"
 And Click on Login button
 Then I should see a Welcome message been displayed
 
+@ignore
 @focus 
 Scenario: Should be Welcomed
 Given I am logged out

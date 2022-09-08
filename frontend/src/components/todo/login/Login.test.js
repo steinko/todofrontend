@@ -13,10 +13,10 @@ describe(' Unit tests of  Login component', () => {
       expect(getByLabelText).not.toBeNull()
   })
 
-  // it('should exist a user name', () => {
-  //   let {getByLabelText} =  render(<Login/>)
-  //  expect(geByLabelText('User Name:').value).toBe('in28minutes')
-  // })
+  it('should exist a user name', () => {
+   let {getByLabelText} =  render(<Login/>)
+   expect(getByLabelText('User Name:').value).toBe('in28minutes')
+  })
 
   it('should exist a password', async () => {
      let {getByLabelText} =  render(<Login/>)
@@ -26,7 +26,7 @@ describe(' Unit tests of  Login component', () => {
 
   it('should exist a button', async () => {
     let {getByRole} =  render(<Login/>)
-   await expect(getByRole('button')).toHaveTextContent('Login')
+    await expect(getByRole('button')).toHaveTextContent('Login')
   })
 
   it ('shold display entered username', () => { 
@@ -41,14 +41,14 @@ describe(' Unit tests of  Login component', () => {
 
 it ('shold display entered password', () => { 
    let { queryByLabelText} = render(<Login/>)
-   let entry = 'cool passworf'
+   let entry = 'cool password'
    let passWordField = queryByLabelText('Password:')
    fireEvent.change(passWordField, { target: { value:  entry } })
    expect(passWordField.value).toBe(entry)
    
 })
 
-it('should failure login ', () => {
+xit('should failure login ', () => {
    let { queryByLabelText,getByTestId, queryByText} = render(<Login/>)
    let entry = 'cool password'
    let passWordField = queryByLabelText('Password:')
@@ -58,7 +58,7 @@ it('should failure login ', () => {
    expect(sessionStorage.getItem('authenticatedUser')).toBeNull()
   })
 
-  it('should sucessfuly logged in  ', () => {
+  xit('should sucessfuly logged in  ', () => {
    let { queryByLabelText,getByTestId,getByRole} = render(<Login/>)
    let password = 'dummy'
    let passWordField = queryByLabelText('Password:')

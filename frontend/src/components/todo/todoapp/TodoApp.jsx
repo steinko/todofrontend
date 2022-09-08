@@ -2,17 +2,20 @@ import React from 'react'
 import {Component} from 'react'
 import Login from '../login/Login'
 import Logout from  '../logout/Logout'
-import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
+import {BrowserRouter as Router, Route,Routes} from 'react-router-dom'
 import Welcome from '../welcome/Welcome';
 import TodoList from '../todolist/TodoList'
 import Header from '../header/Header'
 import Footer from '../footer/Footer'
 import Blank from '../blank/Blank'
 import TodoComponent from '../todocomponent/TodoComponent'
-import AuthenticatedRoute from '../autenticatedroute/AuthenticateRoute'
+
 
 export default class TodoApp extends Component 
-{          
+{          constructor(props) {
+	          super(props)
+	
+           }
           
     
 
@@ -20,22 +23,13 @@ export default class TodoApp extends Component
               
         return(
            <div className="TodoApp">
-               <Router >
-                   <>
-                     <Header/>
-                     
-                     <Switch>
-                       <Route path="/" exact                        component = {Blank}/>
-                       <Route path="/login"                         component = {Login}/>
-                       <Route path="/logout"                        component = {Logout}/>
-                       <AuthenticatedRoute  path="/welcome/:name"   component = {Welcome}/>
-                       <AuthenticatedRoute path="/todos"            component = {TodoList}/>
-                       <AuthenticatedRoute path="/todo"             component = {TodoComponent}/>
-                       <Route                                       component = {ErrorMessage}/>
-                     </Switch>
-                     <Footer/>
-                   </>
-               </Router>
+               <Router history={this.props.history}>
+                  <Routes>
+                     <Route path="/" element={<Login />} />
+                    <Route path="login" element={<Login  history =   {this.props.history} />}/>
+                    <Route path="welcome/:name" element={<Welcome />} />
+                  </Routes>
+                </Router>
 
             </div>
            
