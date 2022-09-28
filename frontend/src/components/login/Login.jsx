@@ -31,7 +31,6 @@ export default class Login extends Component {
         if (this.state.username ==='in28minutes' && this.state.password === 'dummy') { 
             console.log('sucessfull login')
             console.log(this.state)
-            this.props.history.push("/welcome/stein")
         }
         else 
          {

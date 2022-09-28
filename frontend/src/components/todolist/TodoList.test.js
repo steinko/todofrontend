@@ -2,13 +2,7 @@ import TodoList from './TodoList'
 import React from 'react'
 import { render} from '@testing-library/react'
 
-jest.mock('../../../service/todoservice/TodosService.js', () => {
 
-    return {getTodos: jest.fn().mockImplementation(() => JSON.parse( JSON.stringify(
-              [{ "id":0,"username":"Stein","description":"Fix mutter","targetDate":"01-01-2020 12:00:00","isDone":false },
-               { "id":1,"username":"Stein","description":"Fix kajakk","targetDate":"01-01-2020 12:00:00","isDone":false }]          
-    )))}
-});
 
 
 describe(' test TodoList', () => {

@@ -7,7 +7,7 @@ beforeEach (() => {
 
 
 
-it('should exsists todos', async () => { 
+xit('should exsists todos', async () => { 
 	fetch.mockResponseOnce(JSON.stringify([{"id":0,"username":"Stein","description":"Fix mutter","targetDate":"01-01-2020 12:00:00","isDone":false},
 				                 {"id":1,"username":"Stein","description":"Fix kajakk","targetDate":"01-01-2020 12:00:00","isDone":false}]
 	                            ))
@@ -18,7 +18,7 @@ it('should exsists todos', async () => {
 	expect(todos[1].description).toBe("Fix kajakk")
 } )
 
-it('should delete a todo', async () => { 
+xit('should delete a todo', async () => { 
 	
     fetch.mockResponseOnce(JSON.stringify(
 			 [{"id":0,"username":"Stein","description":"Fix mutter","targetDate":"01-01-2020 12:00:00","isDone":false }] 

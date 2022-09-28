@@ -1,6 +1,6 @@
 import React from 'react'
 import {Component} from 'react'
-import TodosService from '../../../service/todoservice/TodosService.js'
+import TodosService from '../../service/todoservice/TodosService.js'
 
 
 export default class TodoList extends Component { 

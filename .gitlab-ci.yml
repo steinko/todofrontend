@@ -1,118 +1,77 @@
-
 stages:
-  - continuose-integration
-  - build-docker-image
-  - deploy-backend
-  - deploy-frontend
-  - acceptance-test
+  - unit-test
+  - build
+  - deploy
+  - acceptanceTest
   - destroy
 
-  
-build-backend:
-  image: amazoncorretto:18
-  stage: continuose-integration
+frontend-unit-test:
+  stage: unit-test
+  image: node
+  before_script:
+    - cd frontend
   script:
-    - cd backeend 
-    - ./gradlew clean assemble --info
+    - npm install
+    - npm test -- --watchAll=false
     - cd ..
   artifacts:
-    paths:
-      - backend/build/libs/component.jar
-     
+    reports:
+      junit: frontend/junit.xml
+      
 
-
-test-backend:
-  image: amazoncorretto:18
-  stage: continuose-integration
+build-frontend:
+  stage: build
+  image: node:16.15.0
   script:
-    - cd backend 
-    - ./gradlew test
-    - cd ..
-
- 
-
-build-docker-image:
-  stage: build-docker-image
-  image: docker
-  services: 
-    - docker:dind
-  script: 
-    - cd component
-    - docker build  -t steinko/todobackend .
-    - docker login --username steinko  --password RoxyMusic11
-    - docker push steinko/todobackend
-  dependencies:
-    - build-backend
-
-
- 
-
-deploy-backend:
-  stage: deploy-backend
-  image: pulumi/pulumi-nodejs
-  variables:
-     DATABASE_URL: " "
-  script:
-    - cd database
-    - npm i
-    - export PULUMI_ACCESS_TOKEN="$PULUMI_ACCESS_TOKEN"
-    - export AWS_ACCESS_KEY_ID="$AWS_ACCESS_KEY_ID"
-    - export AWS_SECRET_ACCESS_KEY="$AWS_SECRET_ACCESS_KEY"
-    - pulumi login
-    - pulumi stack select acceptanceTest
-    - pulumi config set aws:region eu-north-1
-    - pulumi up -y
-    - DATABASE_URL=jdbc:postgresql://$(pulumi stack output  endpoint)
-    - cd ..
-    - cd backend
-    - cd deployment
-    - npm i
-    - export PULUMI_ACCESS_TOKEN="$PULUMI_ACCESS_TOKEN"
-    - export AWS_ACCESS_KEY_ID="$AWS_ACCESS_KEY_ID"
-    - export AWS_SECRET_ACCESS_KEY="$AWS_SECRET_ACCESS_KEY"
-    - pulumi login
-    - pulumi stack select acceptanceTest
-    - pulumi config set DATABASE_URL "$DATABASE_URL" 
-    - pulumi up -y
-    - touch backend.env
-    - echo $(pulumi stack output  url) >> backend.env
-    - cat backend.env
-    - cd ..
+    - cd frontend
+    - npm install
+    - CI=true npm run build
   artifacts:
     paths:
-      - backend/deployment/backend.env
- 
+      - frontend/build
 
-backend-acceptance-test:
-   stage: acceptance-test
-   image: cypress/base:14.16.0
+provide-infrastructure-test:
+   image: pulumi/pulumi-nodejs
+   stage: deploy
    script:
-     - cd backendAcceptanceTest
-     - cat ../backend/deployment/backend.env
-     - export CYPRESS_BASE_URL='http://'$(cat ../backend/deployment/backend.env)'/'
-     - npm i
+    - cd deployment
+    - npm install
+    - export PULUMI_ACCESS_TOKEN="$PULUMI_ACCESS_TOKEN"
+    - export AWS_ACCESS_KEY_ID="$AWS_ACCESS_KEY_ID"
+    - export AWS_SECRET_ACCESS_KEY="$AWS_SECRET_ACCESS_KEY"
+    - pulumi login
+    - pulumi stack select test
+    - pulumi up -y
+    - echo $(pulumi stack output bucketUrl) >> test.env
+   environment:
+     name: test
+   artifacts:
+     paths:
+     - ./deployment/test.env
+
+acceptanceTest:
+   image: cypress/base
+   stage: acceptanceTest
+   script:
+     - cd acceptanceTest
+     - npm ci
+     - export CYPRESS_BASE_URL=http://$(cat ../deployment/test.env)
+     - echo $CYPRESS_BASE_URL
      - npm run cypress:run
-  
-   
-destroy-backend:
+
+
+destroy-infrastructure-test:
   stage: destroy
   image: pulumi/pulumi-nodejs
   script:
-    - cd database
-    - npm i
-    - export PULUMI_ACCESS_TOKEN="$PULUMI_ACCESS_TOKEN"
-    - pulumi login
-    - pulumi stack select acceptanceTest
-    - pulumi destroy -y
-    - cd .. 
-    - cd backend 
     - cd deployment
     - npm i
     - export PULUMI_ACCESS_TOKEN="$PULUMI_ACCESS_TOKEN"
     - export AWS_ACCESS_KEY_ID="$AWS_ACCESS_KEY_ID"
     - export AWS_SECRET_ACCESS_KEY="$AWS_SECRET_ACCESS_KEY"
     - pulumi login
-    - pulumi stack select acceptanceTest
+    - pulumi stack select test
     - pulumi destroy -y
-    - cd ..
+
+
 

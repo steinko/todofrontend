@@ -1,12 +1,9 @@
 import TodoApp from './TodoApp';
 import React from 'react';
-import { createBrowserHistory } from 'history';
 import Welcome from '../welcome/Welcome'
 
  
 describe(' test existence of ToDOApp', () => {
-let  history = createBrowserHistory();
-
 
   beforeEach(() => {
     expect(render(<TodoApp />)).toBeDefined()

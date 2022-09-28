@@ -9,22 +9,20 @@ import Enviroment from  '../enviroment/Environment'
     //let logger = Logger.getLogger();
     try {
       
-       ///logger.info('HelloWorldBeanService')
-       //logger.info('Server Url: ', Enviroment.serverUrl())
+             ///logger.info('HelloWorldBeanService')
+             //logger.info('Server Url: ', Enviroment.serverUrl())
 
-       //logger.info('Env',Enviroment.env())
+             //logger.info('Env',Enviroment.env())
 
-      let response = await fetch(Enviroment.serverUrl()+ '/hello-world-bean')
-     // let json = await response.json()
+             let response = await fetch(Enviroment.serverUrl()+ '/hello-world-bean')
+             let message = await response.json()
       
-      let message = "Hello World Bean"
-      //logger.info('Message',message)
-      return  message
-    } catch(error)  { 
-       // logger.error('Error Hello world bean',error)
-        throw error
-    }
-
+              //logger.info('Message',message)
+              return  message
+         } catch(error)  { 
+                           // logger.error('Error Hello world bean',error)
+                           throw error
+         }
    }
 }
 export default HelloWorldBeanService

@@ -20,7 +20,7 @@ describe('Test Login', function() {
 
 })
 describe("Welcome page", () => {
-  it("should display welcome page", () => {  
+  xit("should display welcome page", () => {  
        cy.visit('/welcome/stein')
        cy.contains( 'Welcome')
   })

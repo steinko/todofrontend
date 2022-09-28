@@ -1,0 +1,3 @@
+name: deploymentLogFrontend
+description: logging bucket frontened
+runtime: nodejs

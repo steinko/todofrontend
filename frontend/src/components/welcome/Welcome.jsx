@@ -1,8 +1,8 @@
 import React from 'react'
 import {Component} from 'react'
 import  {Link} from 'react-router-dom'
-import HelloWorldService from  '../../../service/helloworldservice/HelloWorldService'
-import HelloWorldBeanService from '../../../service/helloworldbeanservice/HelloWorldBeanService'
+import HelloWorldService from  '../../service/helloworldservice/HelloWorldService'
+import HelloWorldBeanService from '../../service/helloworldbeanservice/HelloWorldBeanService'
 
 export default class Welcome extends Component {
     constructor(pops){
